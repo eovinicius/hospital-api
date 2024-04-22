@@ -1,7 +1,8 @@
 using SistemaHospitalar.Domain.Enums;
 
 namespace SistemaHospitalar.Domain.Entities;
-public class Consulta
+
+public class Exame
 {
     public Guid Id { get; private set; }
     public DateTime DataHora { get; private set; }
@@ -12,7 +13,7 @@ public class Consulta
     public virtual Medico? Medico { get; private set; }
     public EStatusAtendimento Status { get; private set; }
 
-    public Consulta(DateTime dataHora, decimal valor, Guid pacienteId, Guid medicoId)
+    public Exame(DateTime dataHora, decimal valor, Guid pacienteId, Guid medicoId)
     {
         Id = Guid.NewGuid();
         DataHora = dataHora;
@@ -20,14 +21,5 @@ public class Consulta
         PacienteId = pacienteId;
         MedicoId = medicoId;
         Status = EStatusAtendimento.Agendada;
-    }
-    public void AtualizarDataHora(DateTime novaDataHora)
-    {
-        DataHora = novaDataHora;
-    }
-
-    public void AtualizarStatus(EStatusAtendimento novoStatus)
-    {
-        Status = novoStatus;
     }
 }

@@ -1,5 +1,5 @@
 namespace SistemaHospitalar.Domain.Enums;
-public enum EStatusConsulta
+public enum EStatusAtendimento
 {
     Agendada,
     Realizada,

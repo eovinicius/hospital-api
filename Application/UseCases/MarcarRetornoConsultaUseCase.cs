@@ -36,7 +36,7 @@ public class MarcarRetornoConsultaUseCase
         if (TemHotarioMarcado)
             throw new DatetimeUnavailableException();
 
-        if (consulta.Status != EStatusConsulta.Realizada)
+        if (consulta.Status != EStatusAtendimento.Realizada)
             throw new Exception("Consulta não realizada para marcar retorno.");
 
         if (dataHora < DateTime.Now)

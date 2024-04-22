@@ -13,18 +13,18 @@ public class MudarStatusConsultaUseCase
         _consultaRepository = consultaRepository;
         _logger = logger;
     }
-    public async Task Execute(Guid Id, EStatusConsulta novoStatus)
+    public async Task Execute(Guid Id, EStatusAtendimento novoStatus)
     {
         var consulta = await _consultaRepository.GetById(Id);
 
         if (consulta == null)
             throw new NotFoundException("Consulta");
 
-        if (novoStatus == EStatusConsulta.Cancelada && consulta.DataHora < DateTime.Now)
+        if (novoStatus == EStatusAtendimento.Cancelada && consulta.DataHora < DateTime.Now)
             throw new InvalidDateTimeException();
 
         consulta.AtualizarStatus(novoStatus);
-        
+
         await _consultaRepository.Update(consulta);
 
         _logger.LogInformation("Status da consulta atualizado com sucesso.");

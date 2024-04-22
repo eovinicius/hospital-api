@@ -10,7 +10,6 @@ public class Medico
     public string Especialidade { get; private set; }
     public bool Ativo { get; private set; }
     public virtual List<Consulta> Consultas { get; set; }
-    public Roles Roles { get; private set; }
 
     public Medico(string nome, string crm, string especialidade)
     {
@@ -20,6 +19,5 @@ public class Medico
         Especialidade = especialidade;
         Ativo = true;
         Consultas = [];
-        Roles = Roles.Medico;
     }
 }

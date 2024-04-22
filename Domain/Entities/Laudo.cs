@@ -1,6 +1,6 @@
 namespace SistemaHospitalar.Domain.Entities;
 
-public class Administrador
+public class Laudo
 {
-
+    
 }
