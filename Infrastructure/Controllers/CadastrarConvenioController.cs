@@ -6,7 +6,7 @@ using SistemaHospitalar.Application.UseCases;
 namespace SistemaHospitalar.Infrastructure.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api")]
     [Authorize(Roles = "Admin")]
     public class CadastrarConvenioController : ControllerBase
     {
@@ -17,7 +17,7 @@ namespace SistemaHospitalar.Infrastructure.Controllers
             _usecase = usecase;
         }
 
-        [HttpPost]
+        [HttpPost("convenios")]
         public async Task<IActionResult> Execute([FromBody] CadastrarConvenioInput input)
         {
             await _usecase.Handle(input);

@@ -11,6 +11,7 @@ public class DataContext : DbContext
     public DbSet<Medico> Medicos { get; set; }
     public DbSet<Consulta> Consultas { get; set; }
     public DbSet<Convenio> Convenios { get; set; }
+    public DbSet<Usuario> Usuarios { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -18,5 +19,6 @@ public class DataContext : DbContext
         modelBuilder.ApplyConfiguration(new MedicoMap());
         modelBuilder.ApplyConfiguration(new ConsultaMap());
         modelBuilder.ApplyConfiguration(new ConvenioMap());
+        modelBuilder.ApplyConfiguration(new UsuarioMap());
     }
 }

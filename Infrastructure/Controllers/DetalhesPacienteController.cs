@@ -4,11 +4,11 @@ using SistemaHospitalar.Application.UseCases;
 
 namespace SistemaHospitalar.Infrastructure.Controllers;
 [ApiController]
-[Route("api/[controller]")]
+[Route("api")]
 [Authorize(Roles = "Admin, Medico")]
 public class DetalhesPacienteController : ControllerBase
 {
     [HttpGet]
-    [Route("{id}")]
+    [Route("pacientes/{id:guid}")]
     public async Task<IActionResult> Execute([FromRoute] Guid id, [FromServices] DetalhesPacienteUseCase usecase) => Ok(await usecase.Handle(id));
 }

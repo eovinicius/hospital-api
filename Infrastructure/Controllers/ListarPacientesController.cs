@@ -4,7 +4,7 @@ using SistemaHospitalar.Application.UseCases;
 
 namespace SistemaHospitalar.Infrastructure.Controllers;
 [ApiController]
-[Route("api/[controller]")]
+[Route("api")]
 [Authorize(Roles = "Admin")]
 public class ListarPacientesController : ControllerBase
 {

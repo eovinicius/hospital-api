@@ -9,7 +9,6 @@ public class PacienteMap : IEntityTypeConfiguration<Paciente>
         builder.ToTable("Pacientes");
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Nome);
-        builder.Property(x => x.Senha);
         builder.Property(x => x.Documento);
         builder.Property(x => x.ImagemDocumento);
         builder.Property(x => x.ConvenioId);

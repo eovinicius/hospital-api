@@ -4,10 +4,10 @@ using SistemaHospitalar.Application.UseCases;
 
 namespace SistemaHospitalar.Infrastructure.Controllers;
 [ApiController]
-[Route("api/[controller]")]
+[Route("api")]
 public class CadastrarPacienteController : ControllerBase
 {
-    [HttpPost]
+    [HttpPost("pacientes")]
     public async Task<IActionResult> Execute([FromBody] CadastrarPacienteInput request, [FromServices] CadastrarPacienteUseCase usecase)
     {
         await usecase.Handle(request);

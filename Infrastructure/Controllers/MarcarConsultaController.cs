@@ -5,11 +5,11 @@ using SistemaHospitalar.Application.UseCases;
 
 namespace SistemaHospitalar.Infrastructure.Controllers;
 [ApiController]
-[Route("api/[controller]")]
+[Route("api")]
 [Authorize(Roles = "Admin, Medico, Paciente")]
 public class MarcarConsultaController : ControllerBase
 {
-    [HttpPost("marcar-consulta")]
+    [HttpPost("consultas")]
     public async Task<IActionResult> Execute([FromServices] MarcarConsultaUseCase usecase, [FromBody] MarcarConsultaInput input)
     {
         await usecase.Handle(input);

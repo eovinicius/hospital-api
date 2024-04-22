@@ -2,6 +2,7 @@ using BCrypt.Net;
 using SistemaHospitalar.Application.Dtos;
 using SistemaHospitalar.Application.Exceptions;
 using SistemaHospitalar.Application.Services;
+using SistemaHospitalar.Domain.Auth;
 using SistemaHospitalar.Domain.Entities;
 using SistemaHospitalar.Domain.Repositories;
 
@@ -9,14 +10,16 @@ namespace SistemaHospitalar.Application.UseCases;
 public class CadastrarMedicoUseCase
 {
     private readonly IMedicoRepository _medicoRepository;
+    private readonly IUsuarioRepository _userRepository;
     private readonly IHashService _hashService;
     private readonly ILogger<CadastrarMedicoUseCase> _logger;
 
-    public CadastrarMedicoUseCase(IMedicoRepository medicoRepository, IHashService hashService, ILogger<CadastrarMedicoUseCase> logger)
+    public CadastrarMedicoUseCase(IMedicoRepository medicoRepository, IHashService hashService, ILogger<CadastrarMedicoUseCase> logger, IUsuarioRepository userRepository)
     {
         _medicoRepository = medicoRepository;
         _hashService = hashService;
         _logger = logger;
+        _userRepository = userRepository;
     }
     public async Task<Medico> Handle(CadastrarMedicoInput input)
     {
@@ -27,9 +30,11 @@ public class CadastrarMedicoUseCase
 
         var hashPassword = _hashService.Hash(input.Senha);
 
-        var medico = new Medico(input.Nome, input.Crm, hashPassword, input.Especialidade);
+        var medico = new Medico(input.Nome, input.Crm, input.Especialidade);
+        var usuario = new Usuario(input.Crm, hashPassword, Roles.Medico);
 
         await _medicoRepository.Add(medico);
+        await _userRepository.Add(usuario);
 
         _logger.LogInformation("Médico cadastrado com sucesso.");
 

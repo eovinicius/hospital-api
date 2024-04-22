@@ -11,7 +11,7 @@ using SistemaHospitalar.Infrastructure.Database;
 namespace SistemaHospitalar.Infrastructure.Database.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240409174957_create_tables")]
+    [Migration("20240422143614_create_tables")]
     partial class create_tables
     {
         /// <inheritdoc />
@@ -90,11 +90,13 @@ namespace SistemaHospitalar.Infrastructure.Database.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Senha")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Roles")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Crm")
+                        .IsUnique();
 
                     b.ToTable("Medicos", (string)null);
                 });
@@ -123,15 +125,36 @@ namespace SistemaHospitalar.Infrastructure.Database.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Senha")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Roles")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ConvenioId");
 
                     b.ToTable("Pacientes", (string)null);
+                });
+
+            modelBuilder.Entity("SistemaHospitalar.Domain.Entities.Usuario", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Roles")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Senha")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Usuarios", (string)null);
                 });
 
             modelBuilder.Entity("SistemaHospitalar.Domain.Entities.Consulta", b =>

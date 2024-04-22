@@ -11,7 +11,6 @@ public class MedicoMap : IEntityTypeConfiguration<Medico>
         builder.Property(x => x.Nome);
         builder.Property(x => x.Crm);
         builder.HasIndex(x => x.Crm).IsUnique();
-        builder.Property(x => x.Senha);
         builder.Property(x => x.Especialidade);
         builder.Property(x => x.Ativo);
 

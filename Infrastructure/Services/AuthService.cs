@@ -18,7 +18,7 @@ public class AuthService : IAuthService
     public string GenerateToken(Guid userId, Roles roles)
     {
         var tokenHandler = new JwtSecurityTokenHandler();
-        var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Secret"]);
+        var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Secret"] ?? string.Empty);
         var tokenDescriptor = new SecurityTokenDescriptor
         {
             Subject = new ClaimsIdentity(

@@ -1,6 +1,7 @@
 using SistemaHospitalar.Application.Dtos;
 using SistemaHospitalar.Application.Exceptions;
 using SistemaHospitalar.Application.Services;
+using SistemaHospitalar.Domain.Auth;
 using SistemaHospitalar.Domain.Entities;
 using SistemaHospitalar.Domain.Repositories;
 
@@ -9,16 +10,18 @@ public class CadastrarPacienteUseCase
 {
     private readonly IPacienteRepository _pacienteRepository;
     private readonly IConvenioRepository _convenioRepository;
+    private readonly IUsuarioRepository _userRepository;
     private readonly IHashService _hashService;
     private readonly ILogger<AtualizarConsultaUseCase> _logger;
 
 
-    public CadastrarPacienteUseCase(IPacienteRepository pacienteRepository, IConvenioRepository convenioRepository, IHashService hashService, ILogger<AtualizarConsultaUseCase> logger)
+    public CadastrarPacienteUseCase(IPacienteRepository pacienteRepository, IConvenioRepository convenioRepository, IHashService hashService, ILogger<AtualizarConsultaUseCase> logger, IUsuarioRepository userRepository)
     {
         _pacienteRepository = pacienteRepository;
         _convenioRepository = convenioRepository;
         _hashService = hashService;
         _logger = logger;
+        _userRepository = userRepository;
     }
 
     public async Task Handle(CadastrarPacienteInput input)
@@ -36,11 +39,23 @@ public class CadastrarPacienteUseCase
             if (convenio == null)
                 throw new NotFoundException("convênio");
         }
-
         var hashPassword = _hashService.Hash(input.Senha);
 
-        var paciente = new Paciente(input.Nome, input.Documento, hashPassword, input.ImagemDocumento, input.ConvenioId);
 
+        byte[] imageBytes = Convert.FromBase64String(input.Documento);
+
+        string fileName = input.Documento + ".jpg";
+
+        string uploadsPath = Path.Combine(Directory.GetCurrentDirectory(), "imagens");
+
+        string filePath = Path.Combine(uploadsPath, fileName);
+
+        File.WriteAllBytes(filePath, imageBytes);
+
+        var paciente = new Paciente(input.Nome, input.Documento, input.ImagemDocumento, input.ConvenioId);
+        var usuario = new Usuario(input.Documento, hashPassword, Roles.Paciente);
+
+        await _userRepository.Add(usuario);
         await _pacienteRepository.Add(paciente);
 
         _logger.LogInformation("Paciente cadastrado com sucesso.");

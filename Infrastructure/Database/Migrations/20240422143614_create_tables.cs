@@ -31,13 +31,27 @@ namespace SistemaHospitalar.Infrastructure.Database.Migrations
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     Nome = table.Column<string>(type: "TEXT", nullable: false),
                     Crm = table.Column<string>(type: "TEXT", nullable: false),
-                    Senha = table.Column<string>(type: "TEXT", nullable: false),
                     Especialidade = table.Column<string>(type: "TEXT", nullable: false),
-                    Ativo = table.Column<bool>(type: "INTEGER", nullable: false)
+                    Ativo = table.Column<bool>(type: "INTEGER", nullable: false),
+                    Roles = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Medicos", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Usuarios",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Username = table.Column<string>(type: "TEXT", nullable: false),
+                    Senha = table.Column<string>(type: "TEXT", nullable: false),
+                    Roles = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Usuarios", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -47,10 +61,10 @@ namespace SistemaHospitalar.Infrastructure.Database.Migrations
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     Nome = table.Column<string>(type: "TEXT", nullable: false),
                     Documento = table.Column<string>(type: "TEXT", nullable: false),
-                    Senha = table.Column<string>(type: "TEXT", nullable: false),
                     ImagemDocumento = table.Column<string>(type: "TEXT", nullable: false),
                     Ativo = table.Column<bool>(type: "INTEGER", nullable: false),
-                    ConvenioId = table.Column<Guid>(type: "TEXT", nullable: true)
+                    ConvenioId = table.Column<Guid>(type: "TEXT", nullable: true),
+                    Roles = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -101,6 +115,12 @@ namespace SistemaHospitalar.Infrastructure.Database.Migrations
                 column: "PacienteId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Medicos_Crm",
+                table: "Medicos",
+                column: "Crm",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Pacientes_ConvenioId",
                 table: "Pacientes",
                 column: "ConvenioId");
@@ -111,6 +131,9 @@ namespace SistemaHospitalar.Infrastructure.Database.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Consultas");
+
+            migrationBuilder.DropTable(
+                name: "Usuarios");
 
             migrationBuilder.DropTable(
                 name: "Medicos");
