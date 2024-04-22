@@ -33,7 +33,7 @@ public class ConsultaRepository : IConsultaRepository
         return await _context.Consultas.FirstOrDefaultAsync(c => c.Id == id);
     }
 
-    public async Task<List<Consulta>> GetConsultasByMedico(Guid medicoId, EStatusConsulta? status = null, DateTime? dataInicial = null, DateTime? dataFinal = null)
+    public async Task<List<Consulta>> GetConsultasByMedico(Guid medicoId, EStatusAtendimento? status = null, DateTime? dataInicial = null, DateTime? dataFinal = null)
     {
         IQueryable<Consulta> query = _context.Consultas
             .Where(c => c.MedicoId == medicoId);
@@ -50,7 +50,7 @@ public class ConsultaRepository : IConsultaRepository
         return await query.ToListAsync();
     }
 
-    public async Task<List<Consulta>> GetConsultasByPaciente(Guid id, EStatusConsulta? status = null)
+    public async Task<List<Consulta>> GetConsultasByPaciente(Guid id, EStatusAtendimento? status = null)
     {
         IQueryable<Consulta> query = _context.Consultas
             .Where(c => c.PacienteId == id);
