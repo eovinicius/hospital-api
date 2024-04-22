@@ -1,2 +1,2 @@
 namespace SistemaHospitalar.Application.Dtos;
-public record CadastrarPacienteInput(string Nome, string Documento, string Senha, string ImagemDocumento, Guid? ConvenioId);
+public record CadastrarPacienteInput(string Nome, string Documento, string Senha, IFormFile ImagemDocumento, Guid? ConvenioId);

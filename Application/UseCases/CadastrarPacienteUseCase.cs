@@ -1,6 +1,7 @@
 using SistemaHospitalar.Application.Dtos;
 using SistemaHospitalar.Application.Exceptions;
 using SistemaHospitalar.Application.Services;
+using SistemaHospitalar.Application.Utils;
 using SistemaHospitalar.Domain.Auth;
 using SistemaHospitalar.Domain.Entities;
 using SistemaHospitalar.Domain.Repositories;
@@ -41,18 +42,9 @@ public class CadastrarPacienteUseCase
         }
         var hashPassword = _hashService.Hash(input.Senha);
 
+        var documentPath = DocumentUtils.Save("C:\\Users\\vosantos\\Desktop\\SistemaHospitalar\\images", input.ImagemDocumento);
 
-        byte[] imageBytes = Convert.FromBase64String(input.Documento);
-
-        string fileName = input.Documento + ".jpg";
-
-        string uploadsPath = Path.Combine(Directory.GetCurrentDirectory(), "imagens");
-
-        string filePath = Path.Combine(uploadsPath, fileName);
-
-        File.WriteAllBytes(filePath, imageBytes);
-
-        var paciente = new Paciente(input.Nome, input.Documento, input.ImagemDocumento, input.ConvenioId);
+        var paciente = new Paciente(input.Nome, input.Documento, documentPath, input.ConvenioId);
         var usuario = new Usuario(input.Documento, hashPassword, Roles.Paciente);
 
         await _userRepository.Add(usuario);
