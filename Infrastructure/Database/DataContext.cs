@@ -12,6 +12,9 @@ public class DataContext : DbContext
     public DbSet<Consulta> Consultas { get; set; }
     public DbSet<Convenio> Convenios { get; set; }
     public DbSet<Usuario> Usuarios { get; set; }
+    public DbSet<Exame> Enderecos { get; set; }
+    public DbSet<Retorno> Retornos { get; set; }
+    public DbSet<Laudo> Laudos { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
