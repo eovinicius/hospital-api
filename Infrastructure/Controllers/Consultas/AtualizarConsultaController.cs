@@ -7,14 +7,14 @@ namespace SistemaHospitalar.Infrastructure.Controllers.Consultas;
 
 [ApiController]
 [Route("api/consultas")]
-[Authorize(Roles = "Admin, Medico, Paciente")]
+[Authorize(Roles = "Admin, Medico")]
 [Tags("Consultas")]
-public class MarcarConsultaController : ControllerBase
+public class AtualizarConsultaController : ControllerBase
 {
-    [HttpPost]
-    public async Task<IActionResult> Execute([FromServices] MarcarConsultaUseCase usecase, [FromBody] MarcarConsultaInput input)
+    [HttpPut("{id:guid}")]
+    public async Task<IActionResult> Execute([FromBody] AtualizarConsultaInput input, [FromRoute] Guid id, [FromServices] AtualizarConsultaUseCase useCase)
     {
-        await usecase.Handle(input);
+        await useCase.Execute(id, input.NovaDataHora);
         return Ok();
     }
 }

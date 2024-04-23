@@ -6,20 +6,13 @@ using SistemaHospitalar.Application.UseCases;
 namespace SistemaHospitalar.Infrastructure.Controllers.Convenios;
 
 [ApiController]
-[Route("api")]
+[Route("api/convenios")]
 [Authorize(Roles = "Admin")]
 [Tags("Convenios")]
 public class CadastrarConvenioController : ControllerBase
 {
-    private readonly CadastrarConvenioUseCase _usecase;
-
-    public CadastrarConvenioController(CadastrarConvenioUseCase usecase)
-    {
-        _usecase = usecase;
-    }
-
-    [HttpPost("convenios")]
-    public async Task<IActionResult> Execute([FromBody] CadastrarConvenioInput input)
+    [HttpPost]
+    public async Task<IActionResult> Execute([FromBody] CadastrarConvenioInput input, [FromServices] CadastrarConvenioUseCase _usecase)
     {
         await _usecase.Handle(input);
         return Created();

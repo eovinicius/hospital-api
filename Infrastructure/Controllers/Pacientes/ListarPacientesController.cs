@@ -6,8 +6,8 @@ namespace SistemaHospitalar.Infrastructure.Controllers.Pacientes;
 
 [ApiController]
 [Route("api/Pacientes")]
-[Tags("Paciente")]
 [Authorize(Roles = "Admin")]
+[Tags("Paciente")]
 public class ListarPacientesController : ControllerBase
 {
     [HttpGet]

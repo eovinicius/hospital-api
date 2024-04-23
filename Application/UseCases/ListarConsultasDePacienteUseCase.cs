@@ -4,13 +4,13 @@ using SistemaHospitalar.Domain.Entities;
 using SistemaHospitalar.Domain.Repositories;
 
 namespace SistemaHospitalar.Application.UseCases;
-public class ListarConsultasDePaciente
+public class ListarConsultasDePacienteUseCase
 {
     private readonly IConsultaRepository _consultaRepository;
     private readonly IPacienteRepository _PacienteRepository;
-    private readonly ILogger<ListarConsultasDePaciente> _logger;
+    private readonly ILogger<ListarConsultasDePacienteUseCase> _logger;
 
-    public ListarConsultasDePaciente(IConsultaRepository consultaRepository, IPacienteRepository pacienteRepository, ILogger<ListarConsultasDePaciente> logger)
+    public ListarConsultasDePacienteUseCase(IConsultaRepository consultaRepository, IPacienteRepository pacienteRepository, ILogger<ListarConsultasDePacienteUseCase> logger)
     {
         _consultaRepository = consultaRepository;
         _PacienteRepository = pacienteRepository;

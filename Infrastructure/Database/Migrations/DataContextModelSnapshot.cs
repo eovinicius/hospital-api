@@ -66,6 +66,66 @@ namespace SistemaHospitalar.Infrastructure.Database.Migrations
                     b.ToTable("Convenios", (string)null);
                 });
 
+            modelBuilder.Entity("SistemaHospitalar.Domain.Entities.Exame", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("ConsultaId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("DataHora")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("MedicoId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("PacienteId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("Valor")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ConsultaId");
+
+                    b.HasIndex("MedicoId");
+
+                    b.HasIndex("PacienteId");
+
+                    b.ToTable("Enderecos");
+                });
+
+            modelBuilder.Entity("SistemaHospitalar.Domain.Entities.Laudo", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("ExameId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ExameId")
+                        .IsUnique();
+
+                    b.ToTable("Laudos");
+                });
+
             modelBuilder.Entity("SistemaHospitalar.Domain.Entities.Medico", b =>
                 {
                     b.Property<Guid>("Id")
@@ -86,9 +146,6 @@ namespace SistemaHospitalar.Infrastructure.Database.Migrations
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("Roles")
-                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -122,14 +179,46 @@ namespace SistemaHospitalar.Infrastructure.Database.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Roles")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ConvenioId");
 
                     b.ToTable("Pacientes", (string)null);
+                });
+
+            modelBuilder.Entity("SistemaHospitalar.Domain.Entities.Retorno", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("ConsultaId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("DataHora")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("MedicoId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("PacienteId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("Valor")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ConsultaId");
+
+                    b.HasIndex("MedicoId");
+
+                    b.HasIndex("PacienteId");
+
+                    b.ToTable("Retornos");
                 });
 
             modelBuilder.Entity("SistemaHospitalar.Domain.Entities.Usuario", b =>
@@ -173,6 +262,44 @@ namespace SistemaHospitalar.Infrastructure.Database.Migrations
                     b.Navigation("Paciente");
                 });
 
+            modelBuilder.Entity("SistemaHospitalar.Domain.Entities.Exame", b =>
+                {
+                    b.HasOne("SistemaHospitalar.Domain.Entities.Consulta", "Consulta")
+                        .WithMany("Exames")
+                        .HasForeignKey("ConsultaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SistemaHospitalar.Domain.Entities.Medico", "Medico")
+                        .WithMany()
+                        .HasForeignKey("MedicoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SistemaHospitalar.Domain.Entities.Paciente", "Paciente")
+                        .WithMany()
+                        .HasForeignKey("PacienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Consulta");
+
+                    b.Navigation("Medico");
+
+                    b.Navigation("Paciente");
+                });
+
+            modelBuilder.Entity("SistemaHospitalar.Domain.Entities.Laudo", b =>
+                {
+                    b.HasOne("SistemaHospitalar.Domain.Entities.Exame", "Exame")
+                        .WithOne("Laudo")
+                        .HasForeignKey("SistemaHospitalar.Domain.Entities.Laudo", "ExameId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Exame");
+                });
+
             modelBuilder.Entity("SistemaHospitalar.Domain.Entities.Paciente", b =>
                 {
                     b.HasOne("SistemaHospitalar.Domain.Entities.Convenio", "Convenio")
@@ -180,6 +307,43 @@ namespace SistemaHospitalar.Infrastructure.Database.Migrations
                         .HasForeignKey("ConvenioId");
 
                     b.Navigation("Convenio");
+                });
+
+            modelBuilder.Entity("SistemaHospitalar.Domain.Entities.Retorno", b =>
+                {
+                    b.HasOne("SistemaHospitalar.Domain.Entities.Consulta", "Consulta")
+                        .WithMany()
+                        .HasForeignKey("ConsultaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SistemaHospitalar.Domain.Entities.Medico", "Medico")
+                        .WithMany()
+                        .HasForeignKey("MedicoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SistemaHospitalar.Domain.Entities.Paciente", "Paciente")
+                        .WithMany()
+                        .HasForeignKey("PacienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Consulta");
+
+                    b.Navigation("Medico");
+
+                    b.Navigation("Paciente");
+                });
+
+            modelBuilder.Entity("SistemaHospitalar.Domain.Entities.Consulta", b =>
+                {
+                    b.Navigation("Exames");
+                });
+
+            modelBuilder.Entity("SistemaHospitalar.Domain.Entities.Exame", b =>
+                {
+                    b.Navigation("Laudo");
                 });
 
             modelBuilder.Entity("SistemaHospitalar.Domain.Entities.Medico", b =>

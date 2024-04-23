@@ -15,6 +15,7 @@ public class DataContext : DbContext
     public DbSet<Exame> Enderecos { get; set; }
     public DbSet<Retorno> Retornos { get; set; }
     public DbSet<Laudo> Laudos { get; set; }
+    public DbSet<Exame> Exames { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -23,5 +24,6 @@ public class DataContext : DbContext
         modelBuilder.ApplyConfiguration(new ConsultaMap());
         modelBuilder.ApplyConfiguration(new ConvenioMap());
         modelBuilder.ApplyConfiguration(new UsuarioMap());
+        modelBuilder.ApplyConfiguration(new ExameMap());
     }
 }

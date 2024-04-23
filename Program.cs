@@ -28,6 +28,7 @@ builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<AutenticarUsuarioUseCase>();
 builder.Services.AddScoped<CadastrarPacienteUseCase>();
 builder.Services.AddScoped<IConvenioRepository, ConvenioRepository>();
+builder.Services.AddScoped<ListarConsultasDeMedicoUseCase>();
 builder.Services.AddScoped<MarcarConsultaUseCase>();
 builder.Services.AddScoped<IConsultaRepository, ConsultaRepository>();
 builder.Services.AddScoped<DetalhesPacienteUseCase>();
@@ -35,6 +36,8 @@ builder.Services.AddScoped<ListarConveniosUseCase>();
 builder.Services.AddScoped<CadastrarConvenioUseCase>();
 builder.Services.AddScoped<ListarPacientesUseCase>();
 builder.Services.AddScoped<ListarMedicosUseCase>();
+builder.Services.AddScoped<MarcarExameUseCase>();
+builder.Services.AddScoped<IExameRepository, ExameRepository>();
 
 builder.Logging.ClearProviders();
 builder.Host.UseNLog();
