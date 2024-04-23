@@ -1,4 +1,5 @@
-using SistemaHospitalar.Application.Dtos;
+using SistemaHospitalar.Application.Dtos.input;
+using SistemaHospitalar.Application.Dtos.Output;
 using SistemaHospitalar.Application.Services;
 using SistemaHospitalar.Domain.Repositories;
 

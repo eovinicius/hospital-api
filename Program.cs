@@ -1,6 +1,5 @@
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -93,7 +92,6 @@ builder.Services.AddSwaggerGen(c =>
             new List<string>()
         }
     });
-    
 });
 
 
@@ -111,6 +109,5 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.UseCors("AllowAllOrigins");
 app.UseHttpsRedirection();
-
 
 app.Run();

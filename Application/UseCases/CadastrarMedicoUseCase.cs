@@ -1,5 +1,4 @@
-using BCrypt.Net;
-using SistemaHospitalar.Application.Dtos;
+using SistemaHospitalar.Application.Dtos.input;
 using SistemaHospitalar.Application.Exceptions;
 using SistemaHospitalar.Application.Services;
 using SistemaHospitalar.Domain.Auth;

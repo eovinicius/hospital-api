@@ -1,8 +1,7 @@
-
 using SistemaHospitalar.Application.Exceptions;
 using SistemaHospitalar.Domain.Repositories;
 using SistemaHospitalar.Domain.Entities;
-using SistemaHospitalar.Application.Dtos;
+using SistemaHospitalar.Application.Dtos.input;
 
 namespace SistemaHospitalar.Application.UseCases;
 public class MarcarConsultaUseCase

@@ -1,4 +1,4 @@
-using SistemaHospitalar.Application.Dtos;
+using SistemaHospitalar.Application.Dtos.input;
 using SistemaHospitalar.Application.Exceptions;
 using SistemaHospitalar.Application.Services;
 using SistemaHospitalar.Application.Utils;

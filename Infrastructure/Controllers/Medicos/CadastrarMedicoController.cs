@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SistemaHospitalar.Application.Dtos;
+using SistemaHospitalar.Application.Dtos.input;
 using SistemaHospitalar.Application.UseCases;
 
 namespace SistemaHospitalar.Infrastructure.Controllers.Medicos;

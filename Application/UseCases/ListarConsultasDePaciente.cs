@@ -1,9 +1,7 @@
-
-using SistemaHospitalar.Application.Dtos;
+using SistemaHospitalar.Application.Dtos.input;
 using SistemaHospitalar.Application.Exceptions;
 using SistemaHospitalar.Domain.Entities;
 using SistemaHospitalar.Domain.Repositories;
-using SQLitePCL;
 
 namespace SistemaHospitalar.Application.UseCases;
 public class ListarConsultasDePaciente
