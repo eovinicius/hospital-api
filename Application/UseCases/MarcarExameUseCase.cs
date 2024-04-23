@@ -41,7 +41,7 @@ public class MarcarExameUseCase
         if (paciente.ConvenioId != null)
             valorDoExame = 0;
 
-        var exame = new Exame(input.DataExame, valorDoExame, input.MedicoId, input.PacienteId);
+        var exame = new Exame(input.Name, input.DataExame, valorDoExame, input.MedicoId, input.PacienteId);
 
         await _exameRepository.Add(exame);
 

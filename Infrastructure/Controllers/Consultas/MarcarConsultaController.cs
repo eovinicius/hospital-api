@@ -3,10 +3,12 @@ using Microsoft.AspNetCore.Mvc;
 using SistemaHospitalar.Application.Dtos;
 using SistemaHospitalar.Application.UseCases;
 
-namespace SistemaHospitalar.Infrastructure.Controllers;
+namespace SistemaHospitalar.Infrastructure.Controllers.Consultas;
+
 [ApiController]
 [Route("api")]
 [Authorize(Roles = "Admin, Medico, Paciente")]
+[Tags("Consultas")]
 public class MarcarConsultaController : ControllerBase
 {
     [HttpPost("consultas")]

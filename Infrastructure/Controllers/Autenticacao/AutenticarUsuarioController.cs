@@ -2,10 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 using SistemaHospitalar.Application.Dtos;
 using SistemaHospitalar.Application.UseCases;
 
-namespace SistemaHospitalar.Infrastructure.Controllers;
+namespace SistemaHospitalar.Infrastructure.Controllers.Autenticacao;
 
 [ApiController]
 [Route("api")]
+[Tags("Autenticacao")]
 public class AutenticarUsuarioController : ControllerBase
 {
     private readonly AutenticarUsuarioUseCase _usecase;

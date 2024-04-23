@@ -2,10 +2,12 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SistemaHospitalar.Application.UseCases;
 
-namespace SistemaHospitalar.Infrastructure.Controllers;
+namespace SistemaHospitalar.Infrastructure.Controllers.Medicos;
+
 [ApiController]
 [Route("api")]
 [Authorize(Roles = "Admin")]
+[Tags("Medicos")]
 public class ListarMedicosController : ControllerBase
 {
 
