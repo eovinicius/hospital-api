@@ -12,6 +12,7 @@ using SistemaHospitalar.Infrastructure.Database.EntityFramework.Repositories;
 using SistemaHospitalar.Infrastructure.Database.Seeds;
 using SistemaHospitalar.Infrastructure.filter;
 using SistemaHospitalar.Infrastructure.Services;
+using SQLitePCL;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();

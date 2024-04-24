@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using SistemaHospitalar.Application.Exceptions;
+using SistemaHospitalar.Domain.Exceptions;
 
 namespace SistemaHospitalar.Infrastructure.filter;
 public class ExceptionFilter : IExceptionFilter
@@ -50,6 +51,14 @@ public class ExceptionFilter : IExceptionFilter
             _logger.LogWarning(context.Exception.Message);
             return;
         }
+        if (context.Exception is DomainEntityException)
+        {
+            context.HttpContext.Response.StatusCode = StatusCodes.Status400BadRequest;
+            context.Result = new BadRequestObjectResult(new { message = context.Exception.Message });
+            _logger.LogWarning(context.Exception.Message);
+            return;
+        }
+
         context.HttpContext.Response.StatusCode = StatusCodes.Status500InternalServerError;
         context.Result = new BadRequestObjectResult(context.Exception.Message);
         Console.WriteLine(context.Exception.Message);

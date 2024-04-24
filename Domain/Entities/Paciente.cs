@@ -1,4 +1,5 @@
 using SistemaHospitalar.Domain.Auth;
+using SistemaHospitalar.Domain.Validation;
 
 namespace SistemaHospitalar.Domain.Entities;
 
@@ -22,10 +23,22 @@ public class Paciente
         ConvenioId = convenioId;
         Ativo = true;
         Consultas = [];
+
+        Validate();
     }
 
     public void Desativar()
     {
         Ativo = false;
+    }
+
+    public void Validate()
+    {
+        DomainValidation.NotNullOrEmpty(Nome, nameof(Nome));
+        DomainValidation.MinLength(Nome, 3, nameof(Nome));
+        DomainValidation.MaxLength(Nome, 100, nameof(Nome));
+        DomainValidation.NotNullOrEmpty(Documento, nameof(Documento));
+        DomainValidation.NotNull(ImagemDocumento, nameof(ImagemDocumento));
+        DomainValidation.Cpf(Documento, nameof(Documento));
     }
 }
