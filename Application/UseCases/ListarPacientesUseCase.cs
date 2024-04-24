@@ -14,7 +14,7 @@ public class ListarPacientesUseCase
     }
     public async Task<List<Paciente>> Handle()
     {
-        _logger.LogInformation("Iniciando listagem de pacientes...");
+        _logger.LogInformation("Bucando pacientes...");
         return await _pacienteRepository.GetAll();
     }
 }

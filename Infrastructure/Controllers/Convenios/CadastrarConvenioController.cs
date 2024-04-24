@@ -15,6 +15,6 @@ public class CadastrarConvenioController : ControllerBase
     public async Task<IActionResult> Execute([FromBody] CadastrarConvenioInput input, [FromServices] CadastrarConvenioUseCase _usecase)
     {
         await _usecase.Handle(input);
-        return Created();
+        return Created("", "Convenio cadastrado com sucesso.");
     }
 }

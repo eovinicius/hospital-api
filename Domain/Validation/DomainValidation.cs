@@ -35,18 +35,12 @@ public class DomainValidation
     }
     public static void Cpf(string target, string fildName)
     {
-        if (target.Length != 11)
-            throw new DomainEntityException($"{fildName} must have 11 characters");
-
         if (!Regex.IsMatch(target, @"^\d{3}\.\d{3}\.\d{3}-\d{2}$"))
             throw new DomainEntityException($"{fildName} is invalid");
     }
 
     public static void Cnpj(string target, string fildName)
     {
-        if (target.Length != 14)
-            throw new DomainEntityException($"{fildName} must have 14 characters");
-
         if (!Regex.IsMatch(target, @"^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$"))
             throw new DomainEntityException($"{fildName} is invalid");
     }

@@ -13,6 +13,6 @@ public class CadastrarPacienteController : ControllerBase
     public async Task<IActionResult> Execute([FromForm] CadastrarPacienteInput request, [FromServices] CadastrarPacienteUseCase usecase)
     {
         await usecase.Handle(request);
-        return Created("", "");
+        return Created("", "Paciente cadastrado com sucesso.");
     }
 }

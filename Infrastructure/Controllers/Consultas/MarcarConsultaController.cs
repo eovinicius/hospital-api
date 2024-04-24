@@ -15,6 +15,6 @@ public class MarcarConsultaController : ControllerBase
     public async Task<IActionResult> Execute([FromServices] MarcarConsultaUseCase usecase, [FromBody] MarcarConsultaInput input)
     {
         await usecase.Handle(input);
-        return Ok();
+        return Created("", "Consulta marcada com sucesso.");
     }
 }

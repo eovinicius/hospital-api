@@ -20,6 +20,6 @@ public class MarcarExameController : ControllerBase
 
         await useCase.Handle(request);
 
-        return Created("", "");
+        return Created("", "Exame marcado com sucesso.");
     }
 }

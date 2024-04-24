@@ -15,7 +15,6 @@ public class CadastrarPacienteUseCase
     private readonly IHashService _hashService;
     private readonly ILogger<AtualizarConsultaUseCase> _logger;
 
-
     public CadastrarPacienteUseCase(IPacienteRepository pacienteRepository, IConvenioRepository convenioRepository, IHashService hashService, ILogger<AtualizarConsultaUseCase> logger, IUsuarioRepository userRepository)
     {
         _pacienteRepository = pacienteRepository;

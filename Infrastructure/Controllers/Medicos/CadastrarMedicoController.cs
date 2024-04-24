@@ -15,7 +15,7 @@ public class CadastrarMedicoController : ControllerBase
     public async Task<IActionResult> Execute([FromServices] CadastrarMedicoUseCase usecase, [FromBody] CadastrarMedicoInput input)
     {
         await usecase.Handle(input);
-        return Created("", "");
+        return Created("", "Médico cadastrado com sucesso.");
     }
 
 }
