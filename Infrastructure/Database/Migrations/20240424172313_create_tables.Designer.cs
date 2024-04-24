@@ -11,7 +11,7 @@ using SistemaHospitalar.Infrastructure.Database;
 namespace SistemaHospitalar.Infrastructure.Database.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240424135942_create_tables")]
+    [Migration("20240424172313_create_tables")]
     partial class create_tables
     {
         /// <inheritdoc />

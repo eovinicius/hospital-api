@@ -10,7 +10,7 @@ namespace SistemaHospitalar.Infrastructure.Controllers.Pacientes;
 public class CadastrarPacienteController : ControllerBase
 {
     [HttpPost]
-    public async Task<IActionResult> Execute(IFormFile document, [FromBody] CadastrarPacienteInput request, [FromServices] CadastrarPacienteUseCase usecase)
+    public async Task<IActionResult> Execute([FromForm] CadastrarPacienteInput request, [FromServices] CadastrarPacienteUseCase usecase)
     {
         await usecase.Handle(request);
         return Created("", "");

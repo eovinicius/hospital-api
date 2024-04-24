@@ -2,8 +2,10 @@ namespace SistemaHospitalar.Application.Utils;
 
 public class DocumentUtils
 {
-    public static string Save(string path, IFormFile document)
+    public static string Save(IFormFile document)
     {
+        var path = "C:\\Users\\vosantos\\Desktop\\SistemaHospitalar\\Infrastructure\\Images";
+
         var DocGuid = Guid.NewGuid().ToString();
         while (File.Exists(Path.Combine(path, DocGuid)))
         {

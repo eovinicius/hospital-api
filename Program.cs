@@ -9,6 +9,7 @@ using SistemaHospitalar.Application.UseCases;
 using SistemaHospitalar.Domain.Repositories;
 using SistemaHospitalar.Infrastructure.Database;
 using SistemaHospitalar.Infrastructure.Database.EntityFramework.Repositories;
+using SistemaHospitalar.Infrastructure.Database.Seeds;
 using SistemaHospitalar.Infrastructure.filter;
 using SistemaHospitalar.Infrastructure.Services;
 
@@ -43,6 +44,7 @@ builder.Services.AddScoped<DesativarMedicoUseCase>();
 builder.Services.AddScoped<DesativarConvenioUseCase>();
 builder.Services.AddScoped<DetalhesConvenioUseCase>();
 builder.Services.AddScoped<DetalhesConsultaUseCase>();
+builder.Services.AddScoped<HashService>();
 
 builder.Logging.ClearProviders();
 builder.Host.UseNLog();
@@ -104,6 +106,12 @@ builder.Services.AddSwaggerGen(c =>
 
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    await SeedManeger.Seed(services);
+}
 
 if (app.Environment.IsDevelopment())
 {
