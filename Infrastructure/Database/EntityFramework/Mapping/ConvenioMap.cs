@@ -8,8 +8,8 @@ public class ConvenioMap : IEntityTypeConfiguration<Convenio>
     {
         builder.ToTable("Convenios");
         builder.HasKey(x => x.Id);
-        builder.Property(x => x.Cnpj);
         builder.Property(x => x.Nome);
-
+        builder.Property(x => x.Cnpj);
+        builder.Property(x => x.Ativo);
     }
 }

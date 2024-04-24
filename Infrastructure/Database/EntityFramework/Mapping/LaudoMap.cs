@@ -10,11 +10,12 @@ public class LaudoMap : IEntityTypeConfiguration<Laudo>
         builder.ToTable("Laudos");
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Descricao);
-        builder.Property(x => x.ExameId);
+        builder.Property(x => x.Imagem);
+        builder.Property(x => x.ConsultaId);
 
-        builder.HasOne(x => x.Exame)
+        builder.HasOne(x => x.Consulta)
             .WithOne(x => x.Laudo)
-            .HasForeignKey<Laudo>(x => x.ExameId);
+            .HasForeignKey<Laudo>(x => x.ConsultaId);
 
     }
 }

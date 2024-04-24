@@ -4,13 +4,15 @@ public class Laudo
 {
     public Guid Id { get; private set; }
     public string Descricao { get; private set; }
-    public Guid ExameId { get; private set; }
-    public virtual Exame? Exame { get; private set; }
+    public string? Imagem { get; private set; }
+    public Guid ConsultaId { get; private set; }
+    public virtual Consulta? Consulta { get; private set; }
 
-    public Laudo(string descricao, Guid exameId)
+    public Laudo(string descricao, string? imagem, Guid consultaId)
     {
         Id = Guid.NewGuid();
         Descricao = descricao;
-        ExameId = exameId;
+        Imagem = imagem;
+        ConsultaId = consultaId;
     }
 }

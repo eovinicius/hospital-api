@@ -6,7 +6,7 @@ namespace SistemaHospitalar.Infrastructure.Controllers.Pacientes;
 
 [ApiController]
 [Route("api/pacientes")]
-[Authorize(Roles = "Admin")]
+// [Authorize(Roles = "Admin")]
 [Tags("Paciente")]
 public class DesativarPacienteController : ControllerBase
 {

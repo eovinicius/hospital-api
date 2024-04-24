@@ -6,11 +6,15 @@ namespace SistemaHospitalar.Infrastructure.Controllers.Medicos;
 
 [ApiController]
 [Route("api/medicos")]
-[Authorize(Roles = "Admin")]
+// [Authorize(Roles = "Admin")]
 [Tags("Medicos")]
 public class ListarMedicosController : ControllerBase
 {
 
     [HttpGet]
-    public async Task<IActionResult> ListarMedicos([FromServices] ListarMedicosUseCase listarMedicosUseCase) => Ok(await listarMedicosUseCase.Handle());
+    public async Task<IActionResult> ListarMedicos([FromServices] ListarMedicosUseCase listarMedicosUseCase)
+    {
+        var medicos = await listarMedicosUseCase.Handle();
+        return Ok(medicos);
+    }
 }

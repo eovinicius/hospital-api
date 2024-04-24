@@ -7,6 +7,7 @@ namespace SistemaHospitalar.Infrastructure.Controllers.Consultas;
 
 [ApiController]
 [Route("api/consultas")]
+// [Authorize(Roles = "Admin, Medico")]
 [Tags("Consultas")]
 public class ListarConsultasDeMedicoController : ControllerBase
 {

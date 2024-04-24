@@ -6,7 +6,7 @@ namespace SistemaHospitalar.Infrastructure.Controllers.Convenios;
 
 [ApiController]
 [Route("api/convenios")]
-[Authorize(Roles = "Admin")]
+// [Authorize(Roles = "Admin")]
 [Tags("Convenios")]
 public class ListarConveniosController : ControllerBase
 {

@@ -7,7 +7,7 @@ namespace SistemaHospitalar.Infrastructure.Controllers.Exames;
 
 [ApiController]
 [Route("api/exames")]
-[Authorize(Roles = "Medico, Admin")]
+// [Authorize(Roles = "Medico, Admin")]
 [Tags("Exames")]
 public class MarcarExameController : ControllerBase
 {

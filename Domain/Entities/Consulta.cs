@@ -10,7 +10,8 @@ public class Consulta
     public virtual Paciente? Paciente { get; private set; }
     public Guid MedicoId { get; private set; }
     public virtual Medico? Medico { get; private set; }
-    public virtual ICollection<Exame> Exames { get; private set; }
+    public virtual List<Exame> Exames { get; private set; }
+    public virtual Laudo? Laudo { get; private set; }
     public EStatusAtendimento Status { get; private set; }
 
     public Consulta(DateTime dataHora, decimal valor, Guid pacienteId, Guid medicoId)

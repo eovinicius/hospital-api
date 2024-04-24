@@ -17,7 +17,8 @@ namespace SistemaHospitalar.Infrastructure.Database.Migrations
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     Nome = table.Column<string>(type: "TEXT", nullable: false),
-                    Cnpj = table.Column<string>(type: "TEXT", nullable: false)
+                    Cnpj = table.Column<string>(type: "TEXT", nullable: false),
+                    Ativo = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -103,7 +104,7 @@ namespace SistemaHospitalar.Infrastructure.Database.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Enderecos",
+                name: "Exames",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
@@ -117,23 +118,43 @@ namespace SistemaHospitalar.Infrastructure.Database.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Enderecos", x => x.Id);
+                    table.PrimaryKey("PK_Exames", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Enderecos_Consultas_ConsultaId",
+                        name: "FK_Exames_Consultas_ConsultaId",
                         column: x => x.ConsultaId,
                         principalTable: "Consultas",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Enderecos_Medicos_MedicoId",
+                        name: "FK_Exames_Medicos_MedicoId",
                         column: x => x.MedicoId,
                         principalTable: "Medicos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Enderecos_Pacientes_PacienteId",
+                        name: "FK_Exames_Pacientes_PacienteId",
                         column: x => x.PacienteId,
                         principalTable: "Pacientes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Laudos",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Descricao = table.Column<string>(type: "TEXT", nullable: false),
+                    Imagem = table.Column<string>(type: "TEXT", nullable: true),
+                    ConsultaId = table.Column<Guid>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Laudos", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Laudos_Consultas_ConsultaId",
+                        column: x => x.ConsultaId,
+                        principalTable: "Consultas",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -173,25 +194,6 @@ namespace SistemaHospitalar.Infrastructure.Database.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Laudos",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Descricao = table.Column<string>(type: "TEXT", nullable: false),
-                    ExameId = table.Column<Guid>(type: "TEXT", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Laudos", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Laudos_Enderecos_ExameId",
-                        column: x => x.ExameId,
-                        principalTable: "Enderecos",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_Consultas_MedicoId",
                 table: "Consultas",
@@ -203,24 +205,24 @@ namespace SistemaHospitalar.Infrastructure.Database.Migrations
                 column: "PacienteId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Enderecos_ConsultaId",
-                table: "Enderecos",
+                name: "IX_Exames_ConsultaId",
+                table: "Exames",
                 column: "ConsultaId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Enderecos_MedicoId",
-                table: "Enderecos",
+                name: "IX_Exames_MedicoId",
+                table: "Exames",
                 column: "MedicoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Enderecos_PacienteId",
-                table: "Enderecos",
+                name: "IX_Exames_PacienteId",
+                table: "Exames",
                 column: "PacienteId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Laudos_ExameId",
+                name: "IX_Laudos_ConsultaId",
                 table: "Laudos",
-                column: "ExameId",
+                column: "ConsultaId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
@@ -254,6 +256,9 @@ namespace SistemaHospitalar.Infrastructure.Database.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Exames");
+
+            migrationBuilder.DropTable(
                 name: "Laudos");
 
             migrationBuilder.DropTable(
@@ -261,9 +266,6 @@ namespace SistemaHospitalar.Infrastructure.Database.Migrations
 
             migrationBuilder.DropTable(
                 name: "Usuarios");
-
-            migrationBuilder.DropTable(
-                name: "Enderecos");
 
             migrationBuilder.DropTable(
                 name: "Consultas");

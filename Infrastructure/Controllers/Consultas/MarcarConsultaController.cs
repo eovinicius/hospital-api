@@ -7,7 +7,7 @@ namespace SistemaHospitalar.Infrastructure.Controllers.Consultas;
 
 [ApiController]
 [Route("api/consultas")]
-[Authorize(Roles = "Admin, Medico, Paciente")]
+// [Authorize(Roles = "Admin, Medico, Paciente")]
 [Tags("Consultas")]
 public class MarcarConsultaController : ControllerBase
 {

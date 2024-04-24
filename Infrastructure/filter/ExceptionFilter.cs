@@ -42,11 +42,18 @@ public class ExceptionFilter : IExceptionFilter
             context.Result = new BadRequestObjectResult(new { message = context.Exception.Message });
             _logger.LogWarning(context.Exception.Message);
             return;
-
+        }
+        if (context.Exception is InvalidCredentialsException)
+        {
+            context.HttpContext.Response.StatusCode = StatusCodes.Status400BadRequest;
+            context.Result = new BadRequestObjectResult(new { message = context.Exception.Message });
+            _logger.LogWarning(context.Exception.Message);
+            return;
         }
         context.HttpContext.Response.StatusCode = StatusCodes.Status500InternalServerError;
         context.Result = new BadRequestObjectResult(context.Exception.Message);
         Console.WriteLine(context.Exception.Message);
+        _logger.LogError(context.Exception.Message);
 
     }
 }

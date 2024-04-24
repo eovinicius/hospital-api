@@ -14,7 +14,6 @@ public class Exame
     public virtual Medico? Medico { get; private set; }
     public Guid ConsultaId { get; private set; }
     public virtual Consulta? Consulta { get; private set; }
-    public virtual Laudo? Laudo { get; private set; }
     public EStatusAtendimento Status { get; private set; }
 
     public Exame(string nome, DateTime dataHora, decimal valor, Guid pacienteId, Guid medicoId)

@@ -7,7 +7,7 @@ namespace SistemaHospitalar.Infrastructure.Controllers.Medicos;
 
 [ApiController]
 [Route("api/medicos")]
-[Authorize(Roles = "Admin")]
+// [Authorize(Roles = "Admin")]
 [Tags("Medicos")]
 public class CadastrarMedicoController : ControllerBase
 {

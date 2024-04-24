@@ -38,6 +38,11 @@ builder.Services.AddScoped<ListarPacientesUseCase>();
 builder.Services.AddScoped<ListarMedicosUseCase>();
 builder.Services.AddScoped<MarcarExameUseCase>();
 builder.Services.AddScoped<IExameRepository, ExameRepository>();
+builder.Services.AddScoped<DetalhesMedicoUseCase>();
+builder.Services.AddScoped<DesativarMedicoUseCase>();
+builder.Services.AddScoped<DesativarConvenioUseCase>();
+builder.Services.AddScoped<DetalhesConvenioUseCase>();
+builder.Services.AddScoped<DetalhesConsultaUseCase>();
 
 builder.Logging.ClearProviders();
 builder.Host.UseNLog();

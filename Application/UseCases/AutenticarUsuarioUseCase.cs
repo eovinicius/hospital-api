@@ -1,5 +1,6 @@
 using SistemaHospitalar.Application.Dtos.input;
 using SistemaHospitalar.Application.Dtos.Output;
+using SistemaHospitalar.Application.Exceptions;
 using SistemaHospitalar.Application.Services;
 using SistemaHospitalar.Domain.Repositories;
 
@@ -24,14 +25,14 @@ public class AutenticarUsuarioUseCase
         var user = await _userRepository.GetByUsername(input.Username);
 
         if (user == null)
-            throw new Exception("document ou senha invalidos");
+            throw new InvalidCredentialsException("usuario ou senha invalidos");
 
         if (!_hashService.Compare(input.Senha, user.Senha))
-            throw new Exception("document ou senha invalidos");
+            throw new InvalidCredentialsException("usuario ou senha invalidos");
 
         var token = _tokenService.GenerateToken(user.Id, user.Roles);
 
-        _logger.LogInformation($"Usuario {input.Username} autenticado com sucesso");
+        _logger.LogInformation($"Usuario com documento `{input.Username}` autenticado com sucesso");
 
         return new AutenticarUsuarioOutput(token);
     }

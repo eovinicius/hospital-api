@@ -25,12 +25,7 @@ public class ExameMap : IEntityTypeConfiguration<Exame>
             .HasForeignKey(x => x.MedicoId);
 
         builder.HasOne(x => x.Consulta)
-            .WithMany()
+            .WithMany(x => x.Exames)
             .HasForeignKey(x => x.ConsultaId);
-
-        builder.HasOne(x => x.Laudo)
-            .WithOne()
-            .HasForeignKey<Laudo>(x => x.ExameId);
-
     }
 }

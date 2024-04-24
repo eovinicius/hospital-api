@@ -20,4 +20,9 @@ public class Medico
         Ativo = true;
         Consultas = [];
     }
+
+    public void Desativar()
+    {
+        Ativo = false;
+    }
 }
