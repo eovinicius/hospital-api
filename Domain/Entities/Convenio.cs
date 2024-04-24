@@ -1,3 +1,5 @@
+using SistemaHospitalar.Domain.Validation;
+
 namespace SistemaHospitalar.Domain.Entities;
 
 public class Convenio
@@ -13,9 +15,24 @@ public class Convenio
         Nome = nome;
         Cnpj = cnpj;
         Ativo = true;
+
+        Validate();
     }
     public void Desativar()
     {
         Ativo = false;
+    }
+
+    public void Ativar()
+    {
+        Ativo = true;
+    }
+
+    private void Validate()
+    {
+        DomainValidation.NotNullOrEmpty(Nome, nameof(Nome));
+        DomainValidation.MinLength(Nome, 3, nameof(Nome));
+        DomainValidation.MaxLength(Nome, 100, nameof(Nome));
+        DomainValidation.Cnpj(Cnpj, nameof(Cnpj));
     }
 }

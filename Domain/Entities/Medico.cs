@@ -1,4 +1,5 @@
 using SistemaHospitalar.Domain.Auth;
+using SistemaHospitalar.Domain.Validation;
 
 namespace SistemaHospitalar.Domain.Entities;
 
@@ -19,10 +20,25 @@ public class Medico
         Especialidade = especialidade;
         Ativo = true;
         Consultas = [];
+
+        Validate();
     }
 
     public void Desativar()
     {
         Ativo = false;
+    }
+
+    private void Validate()
+    {
+        DomainValidation.NotNullOrEmpty(Nome, nameof(Nome));
+        DomainValidation.MinLength(Nome, 3, nameof(Nome));
+        DomainValidation.MaxLength(Nome, 100, nameof(Nome));
+        DomainValidation.NotNullOrEmpty(Crm, nameof(Crm));
+        DomainValidation.MinLength(Crm, 10, nameof(Crm));
+        DomainValidation.MaxLength(Crm, 15, nameof(Crm));
+        DomainValidation.NotNullOrEmpty(Especialidade, nameof(Especialidade));
+        DomainValidation.MinLength(Especialidade, 3, nameof(Especialidade));
+        DomainValidation.MaxLength(Especialidade, 100, nameof(Especialidade));
     }
 }

@@ -1,4 +1,5 @@
 using SistemaHospitalar.Domain.Enums;
+using SistemaHospitalar.Domain.Validation;
 
 namespace SistemaHospitalar.Domain.Entities;
 
@@ -25,5 +26,12 @@ public class Exame
         PacienteId = pacienteId;
         MedicoId = medicoId;
         Status = EStatusAtendimento.Agendada;
+
+        Validate();
+    }
+
+    private void Validate()
+    {
+        DomainValidation.MinValue(Valor, 0, nameof(Valor));
     }
 }

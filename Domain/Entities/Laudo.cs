@@ -1,3 +1,5 @@
+using SistemaHospitalar.Domain.Validation;
+
 namespace SistemaHospitalar.Domain.Entities;
 
 public class Laudo
@@ -14,5 +16,14 @@ public class Laudo
         Descricao = descricao;
         Imagem = imagem;
         ConsultaId = consultaId;
+
+        Validate();
+    }
+
+    private void Validate()
+    {
+        DomainValidation.NotNullOrEmpty(Descricao, nameof(Descricao));
+        DomainValidation.MinLength(Descricao, 3, nameof(Descricao));
+        DomainValidation.MaxLength(Descricao, 1000, nameof(Descricao));
     }
 }
