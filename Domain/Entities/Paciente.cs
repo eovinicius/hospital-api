@@ -27,12 +27,10 @@ public class Paciente
         Validate();
     }
 
-    public void Desativar()
-    {
-        Ativo = false;
-    }
+    public void Desativar() => Ativo = false;
+    public void Ativar() => Ativo = true;
 
-    public void Validate()
+    private void Validate()
     {
         DomainValidation.NotNullOrEmpty(Nome, nameof(Nome));
         DomainValidation.MinLength(Nome, 3, nameof(Nome));
