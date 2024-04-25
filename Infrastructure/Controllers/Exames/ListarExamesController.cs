@@ -1,5 +1,7 @@
+using Azure;
 using Microsoft.AspNetCore.Mvc;
 using SistemaHospitalar.Application.UseCases;
+using SistemaHospitalar.Infrastructure.Presenters;
 
 namespace SistemaHospitalar.Infrastructure.Controllers.Exames;
 
@@ -14,6 +16,6 @@ public class ListarExamesController : ControllerBase
     {
         var exames = await useCase.Handle();
 
-        return Ok(exames);
+        return Ok(new ResponseObject(exames));
     }
 }

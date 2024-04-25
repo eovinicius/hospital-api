@@ -1,6 +1,6 @@
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SistemaHospitalar.Application.UseCases;
+using SistemaHospitalar.Infrastructure.Presenters;
 
 namespace SistemaHospitalar.Infrastructure.Controllers.Pacientes;
 
@@ -11,5 +11,9 @@ namespace SistemaHospitalar.Infrastructure.Controllers.Pacientes;
 public class ListarPacientesController : ControllerBase
 {
     [HttpGet]
-    public async Task<IActionResult> Execute([FromServices] ListarPacientesUseCase usecase) => Ok(await usecase.Handle());
+    public async Task<IActionResult> Execute([FromServices] ListarPacientesUseCase usecase)
+    {
+        var result = await usecase.Handle();
+        return Ok(new ResponseObject(result));
+    }
 }

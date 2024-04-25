@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SistemaHospitalar.Application.Dtos.input;
 using SistemaHospitalar.Application.UseCases;
+using SistemaHospitalar.Infrastructure.Presenters;
 
 namespace SistemaHospitalar.Infrastructure.Controllers.Pacientes;
 
@@ -13,6 +14,6 @@ public class CadastrarPacienteController : ControllerBase
     public async Task<IActionResult> Execute([FromForm] CadastrarPacienteInput request, [FromServices] CadastrarPacienteUseCase usecase)
     {
         await usecase.Handle(request);
-        return Created("", "Paciente cadastrado com sucesso.");
+        return Created("", new ResponseObject("Paciente cadastrado com sucesso!"));
     }
 }

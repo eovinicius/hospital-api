@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SistemaHospitalar.Application.Dtos.input;
 using SistemaHospitalar.Application.UseCases;
+using SistemaHospitalar.Infrastructure.Presenters;
 
 namespace SistemaHospitalar.Infrastructure.Controllers.Laudos;
 
@@ -15,6 +16,6 @@ public class RegistrarLaudoController : ControllerBase
     {
         await useCase.Handle(input);
 
-        return Created("", "Laudo cadastrado com sucesso.");
+        return Created("", new ResponseObject("Laudo registrado com sucesso!"));
     }
 }

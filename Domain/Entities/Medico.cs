@@ -31,14 +31,18 @@ public class Medico
 
     private void Validate()
     {
-        DomainValidation.NotNullOrEmpty(Nome, nameof(Nome));
-        DomainValidation.MinLength(Nome, 3, nameof(Nome));
-        DomainValidation.MaxLength(Nome, 100, nameof(Nome));
-        DomainValidation.NotNullOrEmpty(Crm, nameof(Crm));
-        DomainValidation.MinLength(Crm, 10, nameof(Crm));
-        DomainValidation.MaxLength(Crm, 15, nameof(Crm));
-        DomainValidation.NotNullOrEmpty(Especialidade, nameof(Especialidade));
-        DomainValidation.MinLength(Especialidade, 3, nameof(Especialidade));
-        DomainValidation.MaxLength(Especialidade, 100, nameof(Especialidade));
+        var domainValidation = new DomainValidation("medico");
+
+        domainValidation.NotNullOrEmpty(Nome, nameof(Nome));
+        domainValidation.MinLength(Nome, 3, nameof(Nome));
+        domainValidation.MaxLength(Nome, 100, nameof(Nome));
+        domainValidation.NotNullOrEmpty(Crm, nameof(Crm));
+        domainValidation.MinLength(Crm, 10, nameof(Crm));
+        domainValidation.MaxLength(Crm, 15, nameof(Crm));
+        domainValidation.NotNullOrEmpty(Especialidade, nameof(Especialidade));
+        domainValidation.MinLength(Especialidade, 3, nameof(Especialidade));
+        domainValidation.MaxLength(Especialidade, 100, nameof(Especialidade));
+
+        domainValidation.Check();
     }
 }

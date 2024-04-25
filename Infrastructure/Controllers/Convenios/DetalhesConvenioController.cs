@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using SistemaHospitalar.Application.UseCases;
+using SistemaHospitalar.Infrastructure.Presenters;
 
 namespace SistemaHospitalar.Infrastructure.Controllers.Convenios;
 
@@ -13,6 +14,6 @@ public class DetalhesConvenioController : ControllerBase
     public async Task<IActionResult> Handle([FromServices] DetalhesConvenioUseCase useCase, [FromRoute] Guid id)
     {
         var convenio = await useCase.Handle(id);
-        return Ok(convenio);
+        return Ok(new ResponseObject(convenio));
     }
 }

@@ -22,8 +22,10 @@ public class Laudo
 
     private void Validate()
     {
-        DomainValidation.NotNullOrEmpty(Descricao, nameof(Descricao));
-        DomainValidation.MinLength(Descricao, 3, nameof(Descricao));
-        DomainValidation.MaxLength(Descricao, 1000, nameof(Descricao));
+        var domainValidation = new DomainValidation("laudo");
+
+        domainValidation.NotNullOrEmpty(Descricao, nameof(Descricao));
+        domainValidation.MinLength(Descricao, 3, nameof(Descricao));
+        domainValidation.MaxLength(Descricao, 1000, nameof(Descricao));
     }
 }

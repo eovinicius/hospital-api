@@ -1,7 +1,9 @@
+using Azure;
 using Microsoft.AspNetCore.Mvc;
 using SistemaHospitalar.Application.Dtos.input;
 using SistemaHospitalar.Application.UseCases;
 using SistemaHospitalar.Domain.Enums;
+using SistemaHospitalar.Infrastructure.Presenters;
 
 namespace SistemaHospitalar.Infrastructure.Controllers.Consultas;
 
@@ -18,6 +20,6 @@ public class ListarConsultasDeMedicoController : ControllerBase
 
         var consultas = await usecase.Execute(input);
 
-        return Ok(consultas);
+        return Ok(new ResponseObject(consultas));
     }
 }

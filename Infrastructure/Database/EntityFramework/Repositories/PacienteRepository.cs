@@ -20,7 +20,7 @@ public class PacienteRepository : IPacienteRepository
 
     public async Task<List<Paciente>> GetAll()
     {
-        return await _context.Pacientes.Include(x => x.Convenio).ToListAsync();
+        return await _context.Pacientes.AsNoTracking().ToListAsync();
     }
 
     public async Task<Paciente?> GetByDocumento(string documento)

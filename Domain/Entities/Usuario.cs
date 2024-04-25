@@ -22,11 +22,11 @@ public class Usuario
 
     private void Validate()
     {
-        DomainValidation.NotNullOrEmpty(Username, nameof(Username));
-        DomainValidation.MinLength(Username, 3, nameof(Username));
-        DomainValidation.MaxLength(Username, 100, nameof(Username));
-        DomainValidation.NotNullOrEmpty(Senha, nameof(Senha));
-        DomainValidation.MinLength(Senha, 6, nameof(Senha));
-        DomainValidation.MaxLength(Senha, 100, nameof(Senha));
+        var domainValidation = new DomainValidation("usuario");
+
+        domainValidation.NotNullOrEmpty(Username, nameof(Username));
+        domainValidation.NotNullOrEmpty(Senha, nameof(Senha));
+        domainValidation.MinLength(Senha, 6, nameof(Senha));
+        domainValidation.MaxLength(Senha, 100, nameof(Senha));
     }
 }

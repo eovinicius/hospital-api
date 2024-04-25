@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SistemaHospitalar.Application.Dtos.input;
 using SistemaHospitalar.Application.UseCases;
+using SistemaHospitalar.Infrastructure.Presenters;
 
 namespace SistemaHospitalar.Infrastructure.Controllers.Consultas;
 
@@ -15,6 +16,6 @@ public class MarcarConsultaController : ControllerBase
     public async Task<IActionResult> Execute([FromServices] MarcarConsultaUseCase usecase, [FromBody] MarcarConsultaInput input)
     {
         await usecase.Handle(input);
-        return Created("", "Consulta marcada com sucesso.");
+        return Created("", new ResponseObject("Consulta marcada com sucesso!"));
     }
 }

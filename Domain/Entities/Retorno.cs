@@ -30,6 +30,7 @@ public class Retorno
 
     private void Validate()
     {
-        DomainValidation.MinValue(Valor, 0, nameof(Valor));
+        var domainValidation = new DomainValidation("retorno");
+        domainValidation.MinValue(Valor, 0, nameof(Valor));
     }
 }

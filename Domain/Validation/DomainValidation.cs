@@ -4,44 +4,57 @@ using SistemaHospitalar.Domain.Exceptions;
 namespace SistemaHospitalar.Domain.Validation;
 public class DomainValidation
 {
-    public static void NotNull(object? target, string fildName)
+    private readonly string _entityName;
+    private readonly List<string> _errors = [];
+
+    public DomainValidation(string entityName)
+    {
+        _entityName = entityName;
+    }
+
+    public void NotNull(object? target, string fildName)
     {
         if (target is null)
-            throw new DomainEntityException($"{fildName} should not be null");
+            _errors.Add($"{fildName} should not be null");
     }
 
-    public static void NotNullOrEmpty(string? target, string fildName)
+    public void NotNullOrEmpty(string? target, string fildName)
     {
         if (string.IsNullOrWhiteSpace(target))
-            throw new DomainEntityException($"{fildName} not be null or empty");
+            _errors.Add($"{fildName} not be null or empty");
     }
 
-    public static void MinLength(string? target, int minLenght, string fildName)
+    public void MinLength(string? target, int minLenght, string fildName)
     {
         if (target!.Length < minLenght)
-            throw new DomainEntityException($"{fildName} must be at least {minLenght} characters");
+            _errors.Add($"{fildName} must be at least {minLenght} characters");
     }
 
-    public static void MaxLength(string? target, int maxLenght, string fildName)
+    public void MaxLength(string? target, int maxLenght, string fildName)
     {
         if (target!.Length > maxLenght)
-            throw new DomainEntityException($"{fildName} must be at most {maxLenght} characters");
+            _errors.Add($"{fildName} must be at most {maxLenght} characters");
     }
 
-    public static void MinValue(decimal target, decimal minValue, string fildName)
+    public void MinValue(decimal target, decimal minValue, string fildName)
     {
         if (target < minValue)
-            throw new DomainEntityException($"{fildName} must be at least {minValue}");
+            _errors.Add($"{fildName} must be at least {minValue}");
     }
-    public static void Cpf(string target, string fildName)
+    public void Cpf(string target, string fildName)
     {
         if (!Regex.IsMatch(target, @"^\d{3}\.\d{3}\.\d{3}-\d{2}$"))
-            throw new DomainEntityException($"{fildName} is invalid");
+            _errors.Add($"{fildName} is invalid");
     }
 
-    public static void Cnpj(string target, string fildName)
+    public void Cnpj(string target, string fildName)
     {
         if (!Regex.IsMatch(target, @"^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$"))
-            throw new DomainEntityException($"{fildName} is invalid");
+            _errors.Add($"{fildName} is invalid");
+    }
+
+    public void Check()
+    {
+        if (_errors.Count > 0) throw new DomainException(_entityName, _errors);
     }
 }

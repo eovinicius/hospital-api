@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SistemaHospitalar.Application.Dtos.input;
 using SistemaHospitalar.Application.UseCases;
+using SistemaHospitalar.Infrastructure.Presenters;
 
 namespace SistemaHospitalar.Infrastructure.Controllers.Exames;
 
@@ -20,6 +21,6 @@ public class MarcarExameController : ControllerBase
 
         await useCase.Handle(request);
 
-        return Created("", "Exame marcado com sucesso.");
+        return Created("", new ResponseObject("Exame marcado com sucesso!"));
     }
 }

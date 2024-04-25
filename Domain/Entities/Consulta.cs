@@ -24,6 +24,8 @@ public class Consulta
         MedicoId = medicoId;
         Exames = [];
         Status = EStatusAtendimento.Agendada;
+
+        Validate();
     }
     public void AtualizarDataHora(DateTime novaDataHora)
     {
@@ -37,6 +39,8 @@ public class Consulta
 
     private void Validate()
     {
-        DomainValidation.MinValue(Valor, 0, nameof(Valor));
+        var domainValidation = new DomainValidation("consulta");
+
+        domainValidation.MinValue(Valor, 0, nameof(Valor));
     }
 }

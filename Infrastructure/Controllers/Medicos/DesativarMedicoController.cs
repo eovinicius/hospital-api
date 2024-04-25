@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using SistemaHospitalar.Application.UseCases;
+using SistemaHospitalar.Infrastructure.Presenters;
 
 namespace SistemaHospitalar.Infrastructure.Controllers.Medicos;
 
@@ -13,6 +14,6 @@ public class DesativarMedicoController : ControllerBase
     public async Task<IActionResult> Execute([FromServices] DesativarMedicoUseCase useCase, [FromRoute] Guid id)
     {
         await useCase.Handle(id);
-        return Ok();
+        return Ok(new ResponseObject("Médico desativado com sucesso!"));
     }
 }

@@ -1,4 +1,3 @@
-using SistemaHospitalar.Domain.Auth;
 using SistemaHospitalar.Domain.Validation;
 
 namespace SistemaHospitalar.Domain.Entities;
@@ -13,6 +12,8 @@ public class Paciente
     public Guid? ConvenioId { get; private set; }
     public virtual Convenio? Convenio { get; private set; }
     public virtual List<Consulta> Consultas { get; private set; }
+
+    public Paciente() { }
 
     public Paciente(string nome, string documento, string imagemDocumento, Guid? convenioId)
     {
@@ -32,11 +33,15 @@ public class Paciente
 
     private void Validate()
     {
-        DomainValidation.NotNullOrEmpty(Nome, nameof(Nome));
-        DomainValidation.MinLength(Nome, 3, nameof(Nome));
-        DomainValidation.MaxLength(Nome, 100, nameof(Nome));
-        DomainValidation.NotNullOrEmpty(Documento, nameof(Documento));
-        DomainValidation.NotNull(ImagemDocumento, nameof(ImagemDocumento));
-        DomainValidation.Cpf(Documento, nameof(Documento));
+        var domainValidation = new DomainValidation("paciente");
+
+        domainValidation.NotNullOrEmpty(Nome, nameof(Nome));
+        domainValidation.MinLength(Nome, 3, nameof(Nome));
+        domainValidation.MaxLength(Nome, 100, nameof(Nome));
+        domainValidation.NotNullOrEmpty(Documento, nameof(Documento));
+        domainValidation.NotNull(ImagemDocumento, nameof(ImagemDocumento));
+        domainValidation.Cpf(Documento, nameof(Documento));
+
+        domainValidation.Check();
     }
 }

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SistemaHospitalar.Application.Dtos.input;
 using SistemaHospitalar.Application.UseCases;
+using SistemaHospitalar.Infrastructure.Presenters;
 
 namespace SistemaHospitalar.Infrastructure.Controllers.Autenticacao;
 
@@ -20,6 +21,6 @@ public class AutenticarUsuarioController : ControllerBase
     public async Task<IActionResult> Execute([FromBody] AutenticarUsuarioInput input)
     {
         var result = await _usecase.Handle(input);
-        return Ok(result);
+        return Ok( new ResponseObject(result));
     }
 }

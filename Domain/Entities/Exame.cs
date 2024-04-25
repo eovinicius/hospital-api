@@ -32,6 +32,8 @@ public class Exame
 
     private void Validate()
     {
-        DomainValidation.MinValue(Valor, 0, nameof(Valor));
+        var domainValidation = new DomainValidation("exame");
+
+        domainValidation.MinValue(Valor, 0, nameof(Valor));
     }
 }

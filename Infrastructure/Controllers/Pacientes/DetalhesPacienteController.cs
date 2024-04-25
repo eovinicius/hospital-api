@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SistemaHospitalar.Application.UseCases;
+using SistemaHospitalar.Infrastructure.Presenters;
 
 namespace SistemaHospitalar.Infrastructure.Controllers.Pacientes;
 
@@ -11,5 +12,9 @@ namespace SistemaHospitalar.Infrastructure.Controllers.Pacientes;
 public class DetalhesPacienteController : ControllerBase
 {
     [HttpGet("{id:guid}")]
-    public async Task<IActionResult> Execute([FromRoute] Guid id, [FromServices] DetalhesPacienteUseCase usecase) => Ok(await usecase.Handle(id));
+    public async Task<IActionResult> Execute([FromRoute] Guid id, [FromServices] DetalhesPacienteUseCase usecase)
+    {
+        var result = await usecase.Handle(id);
+        return Ok(new ResponseObject(result));
+    }
 }

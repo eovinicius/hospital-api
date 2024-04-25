@@ -27,7 +27,7 @@ public class MarcarConsultaUseCase
 
         var medico = await _medicoRepository.GetById(input.MedicoId);
 
-        if (medico == null)
+        if (medico == null || medico.Ativo == false)
             throw new NotFoundException("medico");
 
         var consultasDoMedicoNaDataHora = await _consultaRepository.ExistsConsultaMarcada(input.MedicoId, input.DataConsulta);

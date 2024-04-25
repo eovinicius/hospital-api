@@ -28,7 +28,7 @@ public class MarcarExameUseCase
 
         var medico = await _medicoRepository.GetById(input.MedicoId);
 
-        if (medico == null)
+        if (medico == null || medico.Ativo == false)
             throw new NotFoundException("medico");
 
         var examesDoMedicoNaDataHora = await _exameRepository.ExistsExameMarcado(input.MedicoId, input.DataExame);

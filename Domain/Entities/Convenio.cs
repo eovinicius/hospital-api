@@ -30,9 +30,11 @@ public class Convenio
 
     private void Validate()
     {
-        DomainValidation.NotNullOrEmpty(Nome, nameof(Nome));
-        DomainValidation.MinLength(Nome, 3, nameof(Nome));
-        DomainValidation.MaxLength(Nome, 100, nameof(Nome));
-        DomainValidation.Cnpj(Cnpj, nameof(Cnpj));
+        var domainValidation = new DomainValidation("convenio");
+
+        domainValidation.NotNullOrEmpty(Nome, nameof(Nome));
+        domainValidation.MinLength(Nome, 3, nameof(Nome));
+        domainValidation.MaxLength(Nome, 100, nameof(Nome));
+        domainValidation.Cnpj(Cnpj, nameof(Cnpj));
     }
 }
