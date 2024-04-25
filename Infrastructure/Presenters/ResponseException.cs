@@ -5,21 +5,21 @@ namespace SistemaHospitalar.Infrastructure.Presenters
 {
     public class ResponseException : IActionResult
     {
-        private List<string> _errors { get; set; }
-        private int _statusCode { get; set; }
+        private List<string> Errors { get; set; }
+        private int StatusCode { get; set; }
 
         public ResponseException(DomainException exception)
         {
-            _errors = exception.Errors;
-            _statusCode = exception.StatusCode;
+            Errors = exception.Errors;
+            StatusCode = exception.StatusCode;
         }
 
         public Task ExecuteResultAsync(ActionContext context)
         {
             var ResposeData =
-                new ObjectResult(new ResponseObject(null, _errors))
+                new ObjectResult(new ResponseObject(null, Errors))
                 {
-                    StatusCode = _statusCode,
+                    StatusCode = StatusCode,
                 };
 
             return ResposeData.ExecuteResultAsync(context);

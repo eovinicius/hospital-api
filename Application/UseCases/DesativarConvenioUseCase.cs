@@ -22,6 +22,9 @@ public class DesativarConvenioUseCase
         if (convenio == null)
             throw new NotFoundException("Convênio");
 
+        if (convenio.Ativo == false)
+            throw new ConflictException("Convênio já está desativado.");
+
         convenio.Desativar();
         await _convenioRepository.Update(convenio);
 

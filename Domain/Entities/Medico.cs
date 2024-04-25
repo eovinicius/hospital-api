@@ -12,6 +12,8 @@ public class Medico
     public bool Ativo { get; private set; }
     public virtual List<Consulta> Consultas { get; set; }
 
+    public Medico() { }
+
     public Medico(string nome, string crm, string especialidade)
     {
         Id = Guid.NewGuid();
@@ -42,7 +44,6 @@ public class Medico
         domainValidation.NotNullOrEmpty(Especialidade, nameof(Especialidade));
         domainValidation.MinLength(Especialidade, 3, nameof(Especialidade));
         domainValidation.MaxLength(Especialidade, 100, nameof(Especialidade));
-
         domainValidation.Check();
     }
 }

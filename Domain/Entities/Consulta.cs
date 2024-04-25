@@ -15,6 +15,8 @@ public class Consulta
     public virtual Laudo? Laudo { get; private set; }
     public EStatusAtendimento Status { get; private set; }
 
+    public Consulta() { }
+
     public Consulta(DateTime dataHora, decimal valor, Guid pacienteId, Guid medicoId)
     {
         Id = Guid.NewGuid();
@@ -42,5 +44,6 @@ public class Consulta
         var domainValidation = new DomainValidation("consulta");
 
         domainValidation.MinValue(Valor, 0, nameof(Valor));
+        domainValidation.Check();
     }
 }

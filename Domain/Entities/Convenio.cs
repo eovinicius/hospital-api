@@ -9,6 +9,8 @@ public class Convenio
     public string Cnpj { get; private set; }
     public bool Ativo { get; private set; }
 
+    public Convenio() { }
+
     public Convenio(string nome, string cnpj)
     {
         Id = Guid.NewGuid();
@@ -36,5 +38,6 @@ public class Convenio
         domainValidation.MinLength(Nome, 3, nameof(Nome));
         domainValidation.MaxLength(Nome, 100, nameof(Nome));
         domainValidation.Cnpj(Cnpj, nameof(Cnpj));
+        domainValidation.Check();
     }
 }

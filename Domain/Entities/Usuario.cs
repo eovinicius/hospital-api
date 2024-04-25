@@ -10,6 +10,8 @@ public class Usuario
     public string Senha { get; private set; }
     public Roles Roles { get; private set; }
 
+    public Usuario() { }
+
     public Usuario(string username, string senha, Roles roles)
     {
         Id = Guid.NewGuid();
@@ -28,5 +30,6 @@ public class Usuario
         domainValidation.NotNullOrEmpty(Senha, nameof(Senha));
         domainValidation.MinLength(Senha, 6, nameof(Senha));
         domainValidation.MaxLength(Senha, 100, nameof(Senha));
+        domainValidation.Check();
     }
 }

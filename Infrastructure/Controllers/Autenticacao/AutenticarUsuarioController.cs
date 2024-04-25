@@ -10,17 +10,16 @@ namespace SistemaHospitalar.Infrastructure.Controllers.Autenticacao;
 [Tags("Autenticacao")]
 public class AutenticarUsuarioController : ControllerBase
 {
-    private readonly AutenticarUsuarioUseCase _usecase;
 
-    public AutenticarUsuarioController(AutenticarUsuarioUseCase usecase)
-    {
-        _usecase = usecase;
-    }
 
     [HttpPost("login")]
-    public async Task<IActionResult> Execute([FromBody] AutenticarUsuarioInput input)
+    public async Task<IActionResult> Execute
+    (
+        [FromBody] AutenticarUsuarioInput input,
+        [FromServices] AutenticarUsuarioUseCase useCase
+    )
     {
-        var result = await _usecase.Handle(input);
-        return Ok( new ResponseObject(result));
+        var result = await useCase.Handle(input);
+        return Ok(new ResponseObject(result));
     }
 }

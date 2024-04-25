@@ -36,7 +36,7 @@ public class CadastrarPacienteUseCase
         {
             var convenio = await _convenioRepository.GetByIdOrNull(input.ConvenioId);
 
-            if (convenio == null)
+            if (convenio == null || convenio.Ativo == false)
                 throw new NotFoundException("convênio");
         }
         var hashPassword = _hashService.Hash(input.Senha);

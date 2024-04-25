@@ -41,7 +41,6 @@ public class Paciente
         domainValidation.NotNullOrEmpty(Documento, nameof(Documento));
         domainValidation.NotNull(ImagemDocumento, nameof(ImagemDocumento));
         domainValidation.Cpf(Documento, nameof(Documento));
-
         domainValidation.Check();
     }
 }

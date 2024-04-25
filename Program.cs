@@ -12,7 +12,6 @@ using SistemaHospitalar.Infrastructure.Database.EntityFramework.Repositories;
 using SistemaHospitalar.Infrastructure.Database.Seeds;
 using SistemaHospitalar.Infrastructure.filter;
 using SistemaHospitalar.Infrastructure.Services;
-using SQLitePCL;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
@@ -46,6 +45,8 @@ builder.Services.AddScoped<DesativarConvenioUseCase>();
 builder.Services.AddScoped<DetalhesConvenioUseCase>();
 builder.Services.AddScoped<DetalhesConsultaUseCase>();
 builder.Services.AddScoped<HashService>();
+builder.Services.AddScoped<DesativarPacienteUseCase>();
+builder.Services.AddScoped<ListarExamesUseCase>();
 
 builder.Logging.ClearProviders();
 builder.Host.UseNLog();

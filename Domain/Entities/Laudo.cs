@@ -10,6 +10,8 @@ public class Laudo
     public Guid ConsultaId { get; private set; }
     public virtual Consulta? Consulta { get; private set; }
 
+    public Laudo() { }
+
     public Laudo(string descricao, string? imagem, Guid consultaId)
     {
         Id = Guid.NewGuid();
@@ -27,5 +29,6 @@ public class Laudo
         domainValidation.NotNullOrEmpty(Descricao, nameof(Descricao));
         domainValidation.MinLength(Descricao, 3, nameof(Descricao));
         domainValidation.MaxLength(Descricao, 1000, nameof(Descricao));
+        domainValidation.Check();
     }
 }

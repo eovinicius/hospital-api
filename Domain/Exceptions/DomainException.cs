@@ -27,7 +27,6 @@ public class DomainException : Exception
         AddError(messageLogger);
     }
 
-
     private void AddError(string error)
     {
         Errors.Add(error);

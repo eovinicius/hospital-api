@@ -21,6 +21,9 @@ public class DesativarPacienteUseCase
         if (paciente is null)
             throw new NotFoundException("Paciente");
 
+        if (paciente.Ativo is false)
+            throw new ConflictException("Paciente já está desativado.");
+
         paciente.Desativar();
         await _pacienteRepository.Update(paciente);
 
