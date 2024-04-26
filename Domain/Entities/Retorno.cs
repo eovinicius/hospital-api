@@ -16,8 +16,6 @@ public class Retorno
     public virtual Medico? Medico { get; private set; }
     public EStatusAtendimento Status { get; private set; }
 
-    public Retorno() { }
-
     public Retorno(DateTime dataHora, decimal valor, Guid pacienteId, Guid medicoId)
     {
         Id = Guid.NewGuid();

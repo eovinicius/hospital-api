@@ -10,8 +10,6 @@ public class Laudo
     public Guid ConsultaId { get; private set; }
     public virtual Consulta? Consulta { get; private set; }
 
-    public Laudo() { }
-
     public Laudo(string descricao, string? imagem, Guid consultaId)
     {
         Id = Guid.NewGuid();

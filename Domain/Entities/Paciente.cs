@@ -13,8 +13,6 @@ public class Paciente
     public virtual Convenio? Convenio { get; private set; }
     public virtual List<Consulta> Consultas { get; private set; }
 
-    public Paciente() { }
-
     public Paciente(string nome, string documento, string imagemDocumento, Guid? convenioId)
     {
         Id = Guid.NewGuid();

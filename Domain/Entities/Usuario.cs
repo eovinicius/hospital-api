@@ -10,8 +10,6 @@ public class Usuario
     public string Senha { get; private set; }
     public Roles Roles { get; private set; }
 
-    public Usuario() { }
-
     public Usuario(string username, string senha, Roles roles)
     {
         Id = Guid.NewGuid();

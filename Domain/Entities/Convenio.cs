@@ -7,9 +7,8 @@ public class Convenio
     public Guid Id { get; private set; }
     public string Nome { get; private set; }
     public string Cnpj { get; private set; }
+    public virtual List<Paciente> Pacientes { get; private set; }
     public bool Ativo { get; private set; }
-
-    public Convenio() { }
 
     public Convenio(string nome, string cnpj)
     {
@@ -17,6 +16,7 @@ public class Convenio
         Nome = nome;
         Cnpj = cnpj;
         Ativo = true;
+        Pacientes = [];
 
         Validate();
     }

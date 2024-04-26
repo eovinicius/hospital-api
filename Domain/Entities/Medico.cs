@@ -12,8 +12,6 @@ public class Medico
     public bool Ativo { get; private set; }
     public virtual List<Consulta> Consultas { get; set; }
 
-    public Medico() { }
-
     public Medico(string nome, string crm, string especialidade)
     {
         Id = Guid.NewGuid();

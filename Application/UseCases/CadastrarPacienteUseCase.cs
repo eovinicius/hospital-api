@@ -41,7 +41,7 @@ public class CadastrarPacienteUseCase
         }
         var hashPassword = _hashService.Hash(input.Senha);
 
-        var documentPath = DocumentUtils.Save(input.DocumentFile);
+        var documentPath = DocumentUtils.Save(input.ImagemDocumento);
 
         var paciente = new Paciente(input.Nome, input.Documento, documentPath, input.ConvenioId);
         var usuario = new Usuario(input.Documento, hashPassword, Roles.Paciente);
