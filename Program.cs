@@ -10,6 +10,9 @@ using SistemaHospitalar.Infrastructure.filter;
 using SistemaHospitalar;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<DataContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
@@ -22,8 +25,6 @@ builder.Services.AddServices();
 
 builder.Logging.ClearProviders();
 builder.Host.UseNLog();
-
-builder.Services.AddDbContext<DataContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddAuthentication(options =>
 {

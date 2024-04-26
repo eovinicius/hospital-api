@@ -44,5 +44,6 @@ public static class DependencyInjection
     {
         services.AddScoped<IAuthService, AuthService>();
         services.AddScoped<IHashService, HashService>();
+        services.AddScoped<HashService>();
     }
 }
