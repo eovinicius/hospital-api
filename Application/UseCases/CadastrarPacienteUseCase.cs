@@ -4,7 +4,7 @@ using SistemaHospitalar.Application.Services;
 using SistemaHospitalar.Application.Utils;
 using SistemaHospitalar.Domain.Auth;
 using SistemaHospitalar.Domain.Entities;
-using SistemaHospitalar.Domain.Repositories;
+using SistemaHospitalar.Application.Repositories;
 
 namespace SistemaHospitalar.Application.UseCases;
 public class CadastrarPacienteUseCase

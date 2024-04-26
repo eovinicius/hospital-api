@@ -1,7 +1,6 @@
-
 using SistemaHospitalar.Domain.Entities;
 
-namespace SistemaHospitalar.Domain.Repositories;
+namespace SistemaHospitalar.Application.Repositories;
 public interface IConvenioRepository : IRepository<Convenio>
 {
     Task<Convenio?> GetByIdOrNull(Guid? id);

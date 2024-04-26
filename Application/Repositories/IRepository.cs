@@ -1,4 +1,4 @@
-namespace SistemaHospitalar.Domain.Repositories;
+namespace SistemaHospitalar.Application.Repositories;
 public interface IRepository<T>
 {
     Task Add(T entity);

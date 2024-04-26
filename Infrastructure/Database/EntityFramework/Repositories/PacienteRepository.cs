@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using SistemaHospitalar.Application.Dtos.output;
 using SistemaHospitalar.Domain.Entities;
-using SistemaHospitalar.Domain.Repositories;
+using SistemaHospitalar.Application.Repositories;
 
 namespace SistemaHospitalar.Infrastructure.Database.EntityFramework.Repositories;
 public class PacienteRepository : IPacienteRepository
@@ -18,9 +19,12 @@ public class PacienteRepository : IPacienteRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task<List<Paciente>> GetAll()
+    public async Task<List<PacienteOutput>> GetAll()
     {
-        return await _context.Pacientes.AsNoTracking().ToListAsync();
+        return await _context.Pacientes
+        .AsNoTracking()
+        .Select(p => new PacienteOutput(p.Id, p.Nome, p.Documento, p.Ativo, p.Convenio.Nome))
+        .ToListAsync();
     }
 
     public async Task<Paciente?> GetByDocumento(string documento)
@@ -39,5 +43,10 @@ public class PacienteRepository : IPacienteRepository
     {
         _context.Pacientes.Update(paciente);
         return _context.SaveChangesAsync();
+    }
+
+    Task<List<Paciente>> IRepository<Paciente>.GetAll()
+    {
+        throw new NotImplementedException();
     }
 }

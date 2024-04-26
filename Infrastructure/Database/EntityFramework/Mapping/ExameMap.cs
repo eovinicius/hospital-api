@@ -16,16 +16,10 @@ public class ExameMap : IEntityTypeConfiguration<Exame>
         builder.Property(x => x.ConsultaId);
         builder.Property(x => x.Status);
 
-        builder.HasOne(x => x.Paciente)
-            .WithMany()
-            .HasForeignKey(x => x.PacienteId);
+        builder.HasOne(x => x.Paciente).WithMany().HasForeignKey(x => x.PacienteId);
 
-        builder.HasOne(x => x.Medico)
-            .WithMany()
-            .HasForeignKey(x => x.MedicoId);
+        builder.HasOne(x => x.Medico).WithMany().HasForeignKey(x => x.MedicoId);
 
-        builder.HasOne(x => x.Consulta)
-            .WithMany(x => x.Exames)
-            .HasForeignKey(x => x.ConsultaId);
+        builder.HasOne(x => x.Consulta).WithMany(x => x.Exames).HasForeignKey(x => x.ConsultaId);
     }
 }

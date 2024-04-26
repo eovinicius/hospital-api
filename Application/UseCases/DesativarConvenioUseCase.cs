@@ -1,5 +1,5 @@
 using SistemaHospitalar.Application.Exceptions;
-using SistemaHospitalar.Domain.Repositories;
+using SistemaHospitalar.Application.Repositories;
 
 namespace SistemaHospitalar.Application.UseCases;
 

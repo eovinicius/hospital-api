@@ -1,6 +1,6 @@
 using SistemaHospitalar.Domain.Enums;
 using SistemaHospitalar.Application.Exceptions;
-using SistemaHospitalar.Domain.Repositories;
+using SistemaHospitalar.Application.Repositories;
 
 namespace SistemaHospitalar.Application.UseCases;
 public class MudarStatusConsultaUseCase

@@ -1,6 +1,6 @@
 using SistemaHospitalar.Domain.Entities;
 
-namespace SistemaHospitalar.Domain.Repositories;
+namespace SistemaHospitalar.Application.Repositories;
 
 public interface IExameRepository : IRepository<Exame>
 {

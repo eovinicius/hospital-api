@@ -1,7 +1,9 @@
+using SistemaHospitalar.Application.Dtos.output;
 using SistemaHospitalar.Domain.Entities;
 
-namespace SistemaHospitalar.Domain.Repositories;
+namespace SistemaHospitalar.Application.Repositories;
 public interface IPacienteRepository : IRepository<Paciente>
 {
     Task<Paciente?> GetByDocumento(string documento);
+    new Task<List<PacienteOutput>> GetAll();
 }

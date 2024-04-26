@@ -1,7 +1,7 @@
 using SistemaHospitalar.Application.Dtos.input;
 using SistemaHospitalar.Application.Exceptions;
 using SistemaHospitalar.Domain.Entities;
-using SistemaHospitalar.Domain.Repositories;
+using SistemaHospitalar.Application.Repositories;
 
 namespace SistemaHospitalar.Application.UseCases;
 public class ListarConsultasDeMedicoUseCase

@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using SistemaHospitalar.Domain.Entities;
-using SistemaHospitalar.Domain.Repositories;
+using SistemaHospitalar.Application.Repositories;
 
 namespace SistemaHospitalar.Infrastructure.Database.EntityFramework.Repositories;
 
@@ -21,7 +21,7 @@ public class UsuarioRepository : IUsuarioRepository
 
     public async Task<List<Usuario>> GetAll()
     {
-        return await _context.Usuarios.ToListAsync();
+        return await _context.Usuarios.AsNoTracking().ToListAsync();
     }
 
     public async Task<Usuario?> GetById(Guid id)

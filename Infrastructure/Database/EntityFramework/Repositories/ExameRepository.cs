@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using SistemaHospitalar.Domain.Entities;
-using SistemaHospitalar.Domain.Repositories;
+using SistemaHospitalar.Application.Repositories;
 
 namespace SistemaHospitalar.Infrastructure.Database.EntityFramework.Repositories;
 
@@ -26,7 +26,7 @@ public class ExameRepository : IExameRepository
 
     public async Task<List<Exame>> GetAll()
     {
-        return await _context.Exames.ToListAsync();
+        return await _context.Exames.AsNoTracking().ToListAsync();
     }
 
     public async Task<Exame?> GetById(Guid id)

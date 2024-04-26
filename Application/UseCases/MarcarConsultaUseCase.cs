@@ -1,5 +1,5 @@
 using SistemaHospitalar.Application.Exceptions;
-using SistemaHospitalar.Domain.Repositories;
+using SistemaHospitalar.Application.Repositories;
 using SistemaHospitalar.Domain.Entities;
 using SistemaHospitalar.Application.Dtos.input;
 

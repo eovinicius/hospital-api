@@ -13,6 +13,7 @@ public class MedicoMap : IEntityTypeConfiguration<Medico>
         builder.HasIndex(x => x.Crm).IsUnique();
         builder.Property(x => x.Especialidade);
         builder.Property(x => x.Ativo);
+        // builder.Property(x => x.Consultas);
 
         builder.HasMany(x => x.Consultas).WithOne(x => x.Medico);
     }

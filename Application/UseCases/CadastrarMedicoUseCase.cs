@@ -1,9 +1,9 @@
 using SistemaHospitalar.Application.Dtos.input;
 using SistemaHospitalar.Application.Exceptions;
+using SistemaHospitalar.Application.Repositories;
 using SistemaHospitalar.Application.Services;
 using SistemaHospitalar.Domain.Auth;
 using SistemaHospitalar.Domain.Entities;
-using SistemaHospitalar.Domain.Repositories;
 
 namespace SistemaHospitalar.Application.UseCases;
 public class CadastrarMedicoUseCase

@@ -1,5 +1,5 @@
+using SistemaHospitalar.Application.Repositories;
 using SistemaHospitalar.Domain.Entities;
-using SistemaHospitalar.Domain.Repositories;
 
 namespace SistemaHospitalar.Application.UseCases;
 public class ListarMedicosUseCase

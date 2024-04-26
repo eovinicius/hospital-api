@@ -1,8 +1,8 @@
 using SistemaHospitalar.Application.Dtos.input;
 using SistemaHospitalar.Application.Dtos.Output;
 using SistemaHospitalar.Application.Exceptions;
+using SistemaHospitalar.Application.Repositories;
 using SistemaHospitalar.Application.Services;
-using SistemaHospitalar.Domain.Repositories;
 
 namespace SistemaHospitalar.Application.UseCases;
 public class AutenticarUsuarioUseCase

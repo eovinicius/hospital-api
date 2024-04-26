@@ -1,7 +1,7 @@
 using SistemaHospitalar.Domain.Entities;
 using SistemaHospitalar.Domain.Enums;
 
-namespace SistemaHospitalar.Domain.Repositories;
+namespace SistemaHospitalar.Application.Repositories;
 public interface IConsultaRepository : IRepository<Consulta>
 {
     Task<List<Consulta>> GetConsultasByPaciente(Guid id, EStatusAtendimento? status = null);

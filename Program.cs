@@ -6,7 +6,7 @@ using Microsoft.OpenApi.Models;
 using NLog.Web;
 using SistemaHospitalar.Application.Services;
 using SistemaHospitalar.Application.UseCases;
-using SistemaHospitalar.Domain.Repositories;
+using SistemaHospitalar.Application.Repositories;
 using SistemaHospitalar.Infrastructure.Database;
 using SistemaHospitalar.Infrastructure.Database.EntityFramework.Repositories;
 using SistemaHospitalar.Infrastructure.Database.Seeds;

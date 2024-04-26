@@ -24,15 +24,15 @@ public class DomainValidation
             _errors.Add($"{fildName} not be null or empty");
     }
 
-    public void MinLength(string? target, int minLenght, string fildName)
+    public void MinLength(string target, int minLenght, string fildName)
     {
-        if (target!.Length < minLenght)
+        if (target.Length < minLenght)
             _errors.Add($"{fildName} must be at least {minLenght} characters");
     }
 
-    public void MaxLength(string? target, int maxLenght, string fildName)
+    public void MaxLength(string target, int maxLenght, string fildName)
     {
-        if (target!.Length > maxLenght)
+        if (target.Length > maxLenght)
             _errors.Add($"{fildName} must be at most {maxLenght} characters");
     }
 
@@ -44,13 +44,13 @@ public class DomainValidation
     public void Cpf(string target, string fildName)
     {
         if (!Regex.IsMatch(target, @"^[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}$"))
-            _errors.Add($"{fildName} is invalid");
+            _errors.Add($"{fildName} has an invalid CPF format");
     }
 
     public void Cnpj(string target, string fildName)
     {
         if (!Regex.IsMatch(target, @"^[0-9]{2}\.[0-9]{3}\.[0-9]{3}\/[0-9]{4}-[0-9]{2}$"))
-            _errors.Add($"{fildName} is invalid");
+            _errors.Add($"{fildName} has an invalid CNPJ format");
     }
 
     public void Check()

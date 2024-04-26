@@ -15,5 +15,6 @@ public class PacienteMap : IEntityTypeConfiguration<Paciente>
         builder.Property(x => x.Ativo);
 
         builder.HasMany(x => x.Consultas).WithOne(x => x.Paciente);
+        
     }
 }

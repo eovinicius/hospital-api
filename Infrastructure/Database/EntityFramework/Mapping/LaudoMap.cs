@@ -13,9 +13,7 @@ public class LaudoMap : IEntityTypeConfiguration<Laudo>
         builder.Property(x => x.Imagem);
         builder.Property(x => x.ConsultaId);
 
-        builder.HasOne(x => x.Consulta)
-            .WithOne(x => x.Laudo)
-            .HasForeignKey<Laudo>(x => x.ConsultaId);
+        builder.HasOne(x => x.Consulta).WithOne(x => x.Laudo).HasForeignKey<Laudo>(x => x.ConsultaId);
 
     }
 }

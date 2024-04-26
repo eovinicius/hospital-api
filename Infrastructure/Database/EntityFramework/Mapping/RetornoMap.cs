@@ -16,16 +16,10 @@ public class RetornoMap : IEntityTypeConfiguration<Retorno>
         builder.Property(x => x.MedicoId);
         builder.Property(x => x.Status);
 
-        builder.HasOne(x => x.Consulta)
-            .WithMany()
-            .HasForeignKey(x => x.ConsultaId);
+        builder.HasOne(x => x.Consulta).WithOne().HasForeignKey<Retorno>(x => x.ConsultaId);
 
-        builder.HasOne(x => x.Medico)
-            .WithMany()
-            .HasForeignKey(x => x.MedicoId);
+        builder.HasOne(x => x.Medico).WithMany().HasForeignKey(x => x.MedicoId);
 
-        builder.HasOne(x => x.Paciente)
-            .WithMany()
-            .HasForeignKey(x => x.PacienteId);
+        builder.HasOne(x => x.Paciente).WithMany().HasForeignKey(x => x.PacienteId);
     }
 }

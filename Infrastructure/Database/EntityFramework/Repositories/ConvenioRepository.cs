@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using SistemaHospitalar.Domain.Entities;
-using SistemaHospitalar.Domain.Repositories;
+using SistemaHospitalar.Application.Repositories;
 
 namespace SistemaHospitalar.Infrastructure.Database.EntityFramework.Repositories;
 public class ConvenioRepository : IConvenioRepository
@@ -19,7 +19,7 @@ public class ConvenioRepository : IConvenioRepository
 
     public async Task<List<Convenio>> GetAll()
     {
-        return await _context.Convenios.ToListAsync();
+        return await _context.Convenios.AsNoTracking().ToListAsync();
     }
 
     public async Task<Convenio?> GetByCNPJ(string cnpj)

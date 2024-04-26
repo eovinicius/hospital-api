@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using SistemaHospitalar.Domain.Entities;
 using SistemaHospitalar.Domain.Enums;
-using SistemaHospitalar.Domain.Repositories;
+using SistemaHospitalar.Application.Repositories;
 
 namespace SistemaHospitalar.Infrastructure.Database.EntityFramework.Repositories;
 public class ConsultaRepository : IConsultaRepository
@@ -25,7 +25,7 @@ public class ConsultaRepository : IConsultaRepository
 
     public async Task<List<Consulta>> GetAll()
     {
-        return await _context.Consultas.ToListAsync();
+        return await _context.Consultas.AsNoTracking().ToListAsync();
     }
 
     public async Task<Consulta?> GetById(Guid id)
