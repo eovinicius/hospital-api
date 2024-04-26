@@ -484,5 +484,6 @@ $RECYCLE.BIN/
 *.swp
 
 migrations
-Sqlite
 *.db
+*.db-shm
+*.db-wal
