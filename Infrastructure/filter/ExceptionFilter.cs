@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using SistemaHospitalar.Application.Exceptions;
 using SistemaHospitalar.Domain.Exceptions;
 using SistemaHospitalar.Infrastructure.Presenters;
 

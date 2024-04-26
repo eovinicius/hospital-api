@@ -13,8 +13,5 @@ public class PacienteMap : IEntityTypeConfiguration<Paciente>
         builder.Property(x => x.ImagemDocumento);
         builder.Property(x => x.ConvenioId);
         builder.Property(x => x.Ativo);
-
-        builder.HasMany(x => x.Consultas).WithOne(x => x.Paciente);
-        builder.HasOne(x => x.Convenio).WithMany().HasForeignKey(x => x.ConvenioId);
     }
 }
