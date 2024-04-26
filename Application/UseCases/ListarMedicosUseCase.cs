@@ -1,5 +1,5 @@
+using SistemaHospitalar.Application.Dtos.output;
 using SistemaHospitalar.Application.Repositories;
-using SistemaHospitalar.Domain.Entities;
 
 namespace SistemaHospitalar.Application.UseCases;
 public class ListarMedicosUseCase
@@ -12,7 +12,7 @@ public class ListarMedicosUseCase
         _medicoRepository = medicoRepository;
         _logger = logger;
     }
-    public async Task<List<Medico>> Handle()
+    public async Task<List<MedicoOutput>> Handle()
     {
         _logger.LogInformation("Bucando médicos...");
         return await _medicoRepository.GetAll();

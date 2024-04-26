@@ -5,5 +5,5 @@ namespace SistemaHospitalar.Application.Repositories;
 public interface IPacienteRepository : IRepository<Paciente>
 {
     Task<Paciente?> GetByDocumento(string documento);
-    new Task<List<PacienteOutput>> GetAll();
+    Task<List<PacienteOutput>> GetAll();
 }

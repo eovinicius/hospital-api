@@ -23,7 +23,7 @@ public class PacienteRepository : IPacienteRepository
     {
         return await _context.Pacientes
         .AsNoTracking()
-        .Select(p => new PacienteOutput(p.Id, p.Nome, p.Documento, p.Ativo, p.Convenio.Nome))
+        .Select(p => new PacienteOutput(p.Id, p.Nome, p.Documento, p.Ativo, p.Convenio!.Nome))
         .ToListAsync();
     }
 
@@ -43,10 +43,5 @@ public class PacienteRepository : IPacienteRepository
     {
         _context.Pacientes.Update(paciente);
         return _context.SaveChangesAsync();
-    }
-
-    Task<List<Paciente>> IRepository<Paciente>.GetAll()
-    {
-        throw new NotImplementedException();
     }
 }

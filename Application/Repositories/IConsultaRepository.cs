@@ -6,6 +6,6 @@ public interface IConsultaRepository : IRepository<Consulta>
 {
     Task<List<Consulta>> GetConsultasByPaciente(Guid id, EStatusAtendimento? status = null);
     Task<List<Consulta>> GetConsultasByMedico(Guid medicoId, EStatusAtendimento? status = null, DateTime? dataInicial = null, DateTime? dataFinal = null);
-
     Task<bool> ExistsConsultaMarcada(Guid medicoId, DateTime dataHora);
+    Task<List<Consulta>> GetAll();
 }

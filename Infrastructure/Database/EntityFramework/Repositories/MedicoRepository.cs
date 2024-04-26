@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using SistemaHospitalar.Domain.Entities;
 using SistemaHospitalar.Application.Repositories;
+using SistemaHospitalar.Application.Dtos.output;
 
 namespace SistemaHospitalar.Infrastructure.Database.EntityFramework.Repositories;
 public class MedicoRepository : IMedicoRepository
@@ -17,9 +18,12 @@ public class MedicoRepository : IMedicoRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task<List<Medico>> GetAll()
+    public async Task<List<MedicoOutput>> GetAll()
     {
-        return await _context.Medicos.AsNoTracking().ToListAsync();
+        return await _context.Medicos
+        .AsNoTracking()
+        .Select(m => new MedicoOutput(m.Id, m.Nome, m.Crm, m.Especialidade, m.Ativo))
+        .ToListAsync();
     }
 
     public async Task<Medico?> GetByCRM(string crm)

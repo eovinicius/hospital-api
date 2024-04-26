@@ -4,5 +4,5 @@ namespace SistemaHospitalar.Application.Repositories;
 
 public interface ILaudoRepository : IRepository<Laudo>
 {
-
+    Task<List<Laudo>> GetAll();
 }

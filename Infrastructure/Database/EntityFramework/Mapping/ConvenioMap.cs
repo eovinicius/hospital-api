@@ -11,7 +11,5 @@ public class ConvenioMap : IEntityTypeConfiguration<Convenio>
         builder.Property(x => x.Nome);
         builder.Property(x => x.Cnpj);
         builder.Property(x => x.Ativo);
-
-        builder.HasMany(x => x.Pacientes).WithOne(x => x.Convenio).HasForeignKey(x => x.ConvenioId);
     }
 }
