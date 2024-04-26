@@ -43,13 +43,13 @@ public class DomainValidation
     }
     public void Cpf(string target, string fildName)
     {
-        if (!Regex.IsMatch(target, @"^\d{3}\.\d{3}\.\d{3}-\d{2}$"))
+        if (!Regex.IsMatch(target, @"^[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}$"))
             _errors.Add($"{fildName} is invalid");
     }
 
     public void Cnpj(string target, string fildName)
     {
-        if (!Regex.IsMatch(target, @"^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$"))
+        if (!Regex.IsMatch(target, @"^[0-9]{2}\.[0-9]{3}\.[0-9]{3}\/[0-9]{4}-[0-9]{2}$"))
             _errors.Add($"{fildName} is invalid");
     }
 
