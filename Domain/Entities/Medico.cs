@@ -1,4 +1,3 @@
-using SistemaHospitalar.Domain.Auth;
 using SistemaHospitalar.Domain.Validation;
 
 namespace SistemaHospitalar.Domain.Entities;
@@ -11,6 +10,7 @@ public class Medico
     public string Especialidade { get; private set; }
     public bool Ativo { get; private set; }
     public virtual List<Consulta> Consultas { get; set; }
+    public virtual List<Exame> Exames { get; set; }
 
     public Medico(string nome, string crm, string especialidade)
     {
@@ -20,6 +20,7 @@ public class Medico
         Especialidade = especialidade;
         Ativo = true;
         Consultas = [];
+        Exames = [];
 
         Validate();
     }

@@ -12,6 +12,7 @@ public class Paciente
     public Guid? ConvenioId { get; private set; }
     public virtual Convenio? Convenio { get; private set; }
     public virtual List<Consulta> Consultas { get; private set; }
+    public virtual List<Exame> Exames { get; private set; }
 
     public Paciente(string nome, string documento, string imagemDocumento, Guid? convenioId)
     {
@@ -22,6 +23,7 @@ public class Paciente
         ConvenioId = convenioId;
         Ativo = true;
         Consultas = [];
+        Exames = [];
 
         Validate();
     }

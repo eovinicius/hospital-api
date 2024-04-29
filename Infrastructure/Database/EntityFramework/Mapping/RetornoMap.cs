@@ -12,14 +12,8 @@ public class RetornoMap : IEntityTypeConfiguration<Retorno>
         builder.Property(x => x.DataHora);
         builder.Property(x => x.Valor);
         builder.Property(x => x.ConsultaId);
-        builder.Property(x => x.PacienteId);
-        builder.Property(x => x.MedicoId);
         builder.Property(x => x.Status);
 
         builder.HasOne(x => x.Consulta).WithOne().HasForeignKey<Retorno>(x => x.ConsultaId);
-
-        builder.HasOne(x => x.Medico).WithMany().HasForeignKey(x => x.MedicoId);
-
-        builder.HasOne(x => x.Paciente).WithMany().HasForeignKey(x => x.PacienteId);
     }
 }
