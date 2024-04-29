@@ -21,7 +21,7 @@ public class ConvenioRepository : IConvenioRepository
     {
         return await _context.Convenios
         .AsNoTracking()
-        .Skip(pagination.Page - 1 * pagination.Limit)
+        .Skip((pagination.Page - 1) * pagination.Limit)
         .Take(pagination.Limit)
         .ToListAsync();
     }

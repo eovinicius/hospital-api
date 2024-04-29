@@ -23,7 +23,7 @@ public class UsuarioRepository : IUsuarioRepository
     {
         return await _context.Usuarios
         .AsNoTracking()
-        .Skip(pagination.Page - 1 * pagination.Limit)
+        .Skip((pagination.Page - 1) * pagination.Limit)
         .Take(pagination.Limit)
         .ToListAsync();
     }

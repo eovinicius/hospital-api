@@ -28,7 +28,7 @@ public class ExameRepository : IExameRepository
     {
         return await _context.Exames
         .AsNoTracking()
-        .Skip(pagination.Page - 1 * pagination.Limit)
+        .Skip((pagination.Page - 1) * pagination.Limit)
         .Take(pagination.Limit)
         .ToListAsync();
     }
