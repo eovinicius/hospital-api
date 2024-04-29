@@ -1,3 +1,4 @@
+using SistemaHospitalar.Application.Dtos.input;
 using SistemaHospitalar.Application.Dtos.output;
 using SistemaHospitalar.Application.Repositories;
 
@@ -12,9 +13,9 @@ public class ListarPacientesUseCase
         _pacienteRepository = pacienteRepository;
         _logger = logger;
     }
-    public async Task<List<PacienteOutput>> Handle()
+    public async Task<List<PacienteOutput>> Handle(Pagination input)
     {
         _logger.LogInformation("Bucando pacientes...");
-        return await _pacienteRepository.GetAll();
+        return await _pacienteRepository.GetAll(input);
     }
 }

@@ -13,9 +13,9 @@ public class ListarConsultasUseCase
         _consultaRepository = consultaRepository;
         _logger = logger;
     }
-    public async Task<List<ConsultaOutput>> Handle()
+    public async Task<List<ConsultaOutput>> Handle(Pagination input)
     {
         _logger.LogInformation("Iniciando listagem de convênios...");
-        return await _consultaRepository.GetAll();
+        return await _consultaRepository.GetAll(input);
     }
 }

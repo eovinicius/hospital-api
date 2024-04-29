@@ -5,5 +5,5 @@ public interface IConvenioRepository : IRepository<Convenio>
 {
     Task<Convenio?> GetByIdOrNull(Guid? id);
     Task<Convenio?> GetByCNPJ(string cnpj);
-    Task<List<Convenio>> GetAll();
+    Task<List<Convenio>> GetAll(Pagination pagination);
 }

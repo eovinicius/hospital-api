@@ -12,9 +12,9 @@ public class ListarConveniosUseCase
         _convenioRepository = convenioRepository;
         _logger = logger;
     }
-    public async Task<List<Convenio>> Handle()
+    public async Task<List<Convenio>> Handle(Pagination input)
     {
         _logger.LogInformation("Iniciando listagem de convênios...");
-        return await _convenioRepository.GetAll();
+        return await _convenioRepository.GetAll(input);
     }
 }

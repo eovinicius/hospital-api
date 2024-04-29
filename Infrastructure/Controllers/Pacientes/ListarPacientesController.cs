@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using SistemaHospitalar.Application.Dtos.input;
+using SistemaHospitalar.Application.Repositories;
 using SistemaHospitalar.Application.UseCases;
 using SistemaHospitalar.Infrastructure.Presenters;
 
@@ -11,9 +13,9 @@ namespace SistemaHospitalar.Infrastructure.Controllers.Pacientes;
 public class ListarPacientesController : ControllerBase
 {
     [HttpGet]
-    public async Task<IActionResult> Execute([FromServices] ListarPacientesUseCase usecase)
+    public async Task<IActionResult> Execute([FromServices] ListarPacientesUseCase usecase, [FromQuery] Pagination input)
     {
-        var result = await usecase.Handle();
+        var result = await usecase.Handle(input);
         return Ok(new ResponseObject(result));
     }
 }

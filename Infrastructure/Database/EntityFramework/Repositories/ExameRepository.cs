@@ -24,9 +24,13 @@ public class ExameRepository : IExameRepository
         return await _context.Exames.AnyAsync(e => e.MedicoId == medicoId && e.DataHora == dataExame);
     }
 
-    public async Task<List<Exame>> GetAll()
+    public async Task<List<Exame>> GetAll(Pagination pagination)
     {
-        return await _context.Exames.AsNoTracking().ToListAsync();
+        return await _context.Exames
+        .AsNoTracking()
+        .Skip(pagination.Page - 1 * pagination.Limit)
+        .Take(pagination.Limit)
+        .ToListAsync();
     }
 
     public async Task<Exame?> GetById(Guid id)

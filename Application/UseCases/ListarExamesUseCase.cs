@@ -14,9 +14,9 @@ public class ListarExamesUseCase
         _logger = logger;
     }
 
-    public async Task<List<Exame>> Handle()
+    public async Task<List<Exame>> Handle(Pagination input)
     {
         _logger.LogInformation("Bucando exames...");
-        return await _exameRepository.GetAll();
+        return await _exameRepository.GetAll(input);
     }
 }

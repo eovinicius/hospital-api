@@ -19,11 +19,13 @@ public class PacienteRepository : IPacienteRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task<List<PacienteOutput>> GetAll()
+    public async Task<List<PacienteOutput>> GetAll(Pagination pagination)
     {
         return await _context.Pacientes
         .AsNoTracking()
         .Select(p => new PacienteOutput(p.Id, p.Nome, p.Documento, p.Ativo, p.Convenio!.Nome))
+        .Skip((pagination.Page - 1) * pagination.Limit)
+        .Take(pagination.Limit)
         .ToListAsync();
     }
 

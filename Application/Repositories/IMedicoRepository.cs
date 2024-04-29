@@ -5,5 +5,5 @@ namespace SistemaHospitalar.Application.Repositories;
 public interface IMedicoRepository : IRepository<Medico>
 {
     Task<Medico?> GetByCRM(string crm);
-    Task<List<MedicoOutput>> GetAll();
+    Task<List<MedicoOutput>> GetAll(Pagination pagination);
 }

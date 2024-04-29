@@ -17,9 +17,13 @@ public class ConvenioRepository : IConvenioRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task<List<Convenio>> GetAll()
+    public async Task<List<Convenio>> GetAll(Pagination pagination)
     {
-        return await _context.Convenios.AsNoTracking().ToListAsync();
+        return await _context.Convenios
+        .AsNoTracking()
+        .Skip(pagination.Page - 1 * pagination.Limit)
+        .Take(pagination.Limit)
+        .ToListAsync();
     }
 
     public async Task<Convenio?> GetByCNPJ(string cnpj)

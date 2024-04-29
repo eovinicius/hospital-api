@@ -4,5 +4,5 @@ namespace SistemaHospitalar.Application.Repositories;
 
 public interface IRetornoRepository : IRepository<Retorno>
 {
-    Task<List<Retorno>> GetAll();
+    Task<List<Retorno>> GetAll(Pagination pagination);
 }

@@ -19,9 +19,13 @@ public class UsuarioRepository : IUsuarioRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task<List<Usuario>> GetAll()
+    public async Task<List<Usuario>> GetAll(Pagination pagination)
     {
-        return await _context.Usuarios.AsNoTracking().ToListAsync();
+        return await _context.Usuarios
+        .AsNoTracking()
+        .Skip(pagination.Page - 1 * pagination.Limit)
+        .Take(pagination.Limit)
+        .ToListAsync();
     }
 
     public async Task<Usuario?> GetById(Guid id)

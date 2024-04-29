@@ -7,10 +7,6 @@ public class DocumentUtils
         var path = "C:\\Users\\vosantos\\Desktop\\SistemaHospitalar\\Infrastructure\\Images";
 
         var DocGuid = Guid.NewGuid().ToString();
-        while (File.Exists(Path.Combine(path, DocGuid)))
-        {
-            DocGuid = Guid.NewGuid().ToString();
-        }
 
         var DocPath = Path.Combine(path, DocGuid);
 
