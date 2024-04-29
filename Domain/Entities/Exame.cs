@@ -17,7 +17,7 @@ public class Exame
     public virtual Consulta? Consulta { get; private set; }
     public EStatusAtendimento Status { get; private set; }
 
-    public Exame(string nome, DateTime dataHora, decimal valor, Guid pacienteId, Guid medicoId)
+    public Exame(string nome, DateTime dataHora, decimal valor, Guid pacienteId, Guid medicoId, Guid consultaId)
     {
         Id = Guid.NewGuid();
         Nome = nome;
@@ -25,6 +25,7 @@ public class Exame
         Valor = valor;
         PacienteId = pacienteId;
         MedicoId = medicoId;
+        ConsultaId = consultaId;
         Status = EStatusAtendimento.Agendada;
 
         Validate();

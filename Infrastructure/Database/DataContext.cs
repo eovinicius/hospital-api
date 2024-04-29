@@ -12,10 +12,9 @@ public class DataContext : DbContext
     public DbSet<Consulta> Consultas { get; set; }
     public DbSet<Convenio> Convenios { get; set; }
     public DbSet<Usuario> Usuarios { get; set; }
-    public DbSet<Exame> Enderecos { get; set; }
+    public DbSet<Exame> Exames { get; set; }
     public DbSet<Retorno> Retornos { get; set; }
     public DbSet<Laudo> Laudos { get; set; }
-    public DbSet<Exame> Exames { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -25,5 +24,7 @@ public class DataContext : DbContext
         modelBuilder.ApplyConfiguration(new ConvenioMap());
         modelBuilder.ApplyConfiguration(new UsuarioMap());
         modelBuilder.ApplyConfiguration(new ExameMap());
+        modelBuilder.ApplyConfiguration(new RetornoMap());
+        modelBuilder.ApplyConfiguration(new LaudoMap());
     }
 }

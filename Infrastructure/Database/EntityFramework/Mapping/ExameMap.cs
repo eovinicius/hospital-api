@@ -9,6 +9,7 @@ public class ExameMap : IEntityTypeConfiguration<Exame>
     {
         builder.ToTable("Exames");
         builder.HasKey(x => x.Id);
+        builder.Property(x => x.Nome);
         builder.Property(x => x.DataHora);
         builder.Property(x => x.Valor);
         builder.Property(x => x.PacienteId);
