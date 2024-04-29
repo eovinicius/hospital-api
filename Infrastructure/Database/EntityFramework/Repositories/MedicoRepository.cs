@@ -18,11 +18,11 @@ public class MedicoRepository : IMedicoRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task<List<MedicoOutput>> GetAll(Pagination pagination)
+    public async Task<List<ListMedicoOutput>> GetAll(Pagination pagination)
     {
         return await _context.Medicos
         .AsNoTracking()
-        .Select(m => new MedicoOutput(m.Id, m.Nome, m.Crm, m.Especialidade, m.Ativo))
+        .Select(m => new ListMedicoOutput(m.Id, m.Nome, m.Crm, m.Especialidade, m.Ativo))
         .Skip((pagination.Page - 1) * pagination.Limit)
         .Take(pagination.Limit)
         .ToListAsync();

@@ -13,7 +13,7 @@ public class ListarPacientesUseCase
         _pacienteRepository = pacienteRepository;
         _logger = logger;
     }
-    public async Task<List<PacienteOutput>> Handle(Pagination input)
+    public async Task<List<ListPacienteOutput>> Handle(Pagination input)
     {
         _logger.LogInformation("Bucando pacientes...");
         return await _pacienteRepository.GetAll(input);

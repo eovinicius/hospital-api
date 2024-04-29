@@ -12,7 +12,7 @@ public class ListarMedicosUseCase
         _medicoRepository = medicoRepository;
         _logger = logger;
     }
-    public async Task<List<MedicoOutput>> Handle(Pagination input)
+    public async Task<List<ListMedicoOutput>> Handle(Pagination input)
     {
         _logger.LogInformation("Bucando médicos...");
         return await _medicoRepository.GetAll(input);
