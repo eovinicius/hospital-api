@@ -13,7 +13,7 @@ public static class DependencyInjection
         services.AddScoped<CadastrarMedicoUseCase>();
         services.AddScoped<AutenticarUsuarioUseCase>();
         services.AddScoped<CadastrarPacienteUseCase>();
-        services.AddScoped<ListarConsultasDeMedicoUseCase>();
+        services.AddScoped<ListarConsultasUseCase>();
         services.AddScoped<MarcarConsultaUseCase>();
         services.AddScoped<ListarConveniosUseCase>();
         services.AddScoped<CadastrarConvenioUseCase>();

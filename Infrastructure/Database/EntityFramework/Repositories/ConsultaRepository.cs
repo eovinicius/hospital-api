@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using SistemaHospitalar.Domain.Entities;
 using SistemaHospitalar.Domain.Enums;
 using SistemaHospitalar.Application.Repositories;
+using SistemaHospitalar.Application.Dtos.output;
 
 namespace SistemaHospitalar.Infrastructure.Database.EntityFramework.Repositories;
 public class ConsultaRepository : IConsultaRepository
@@ -23,9 +24,12 @@ public class ConsultaRepository : IConsultaRepository
         return await _context.Consultas.AnyAsync(c => c.MedicoId == medicoId && c.DataHora == dataHora);
     }
 
-    public async Task<List<Consulta>> GetAll()
+    public async Task<List<ConsultaOutput>> GetAll()
     {
-        return await _context.Consultas.AsNoTracking().ToListAsync();
+        return await _context.Consultas
+        .AsNoTracking()
+        .Select(x => new ConsultaOutput(x.Id, x.DataHora, x.Valor, x.Paciente!.Nome, x.Medico!.Nome, x.Exames.Select(e => e.Nome), x.Status))
+        .ToListAsync();
     }
 
     public async Task<Consulta?> GetById(Guid id)
