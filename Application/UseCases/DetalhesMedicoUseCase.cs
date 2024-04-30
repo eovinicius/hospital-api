@@ -15,7 +15,7 @@ public class DetalhesMedicoUseCase
         _medicoRepository = medicoRepository;
         _logger = logger;
     }
-    public async Task<MedicoDto> Handle(Guid id)
+    public async Task<MedicoDto?> Handle(Guid id)
     {
         _logger.LogInformation("Buscando médico {id}", id);
         var medico = await _medicoRepository.GetById(id);

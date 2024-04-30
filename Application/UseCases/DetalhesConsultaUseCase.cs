@@ -15,7 +15,7 @@ public class DetalhesConsultaUseCase
         _logger = logger;
     }
 
-    public async Task<ConsultaDto> Handle(Guid id)
+    public async Task<ConsultaDto?> Handle(Guid id)
     {
         _logger.LogInformation("Buscando detalhes da consulta {id}", id);
 

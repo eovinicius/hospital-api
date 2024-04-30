@@ -16,7 +16,7 @@ public class DetalhesConvenioUseCase
         _logger = logger;
     }
 
-    public async Task<ConvenioDto> Handle(Guid id)
+    public async Task<ConvenioDto?> Handle(Guid id)
     {
         _logger.LogInformation("Buscando convênio {id}", id);
 

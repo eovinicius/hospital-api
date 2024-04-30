@@ -1,5 +1,5 @@
-using SistemaHospitalar.Domain.Entities;
 using SistemaHospitalar.Application.Repositories;
+using SistemaHospitalar.Application.Dtos.output;
 
 namespace SistemaHospitalar.Application.UseCases;
 
@@ -14,7 +14,7 @@ public class ListarExamesUseCase
         _logger = logger;
     }
 
-    public async Task<List<Exame>> Handle(Pagination input)
+    public async Task<List<ListExameOutput>> Handle(Pagination input)
     {
         _logger.LogInformation("Bucando exames...");
         return await _exameRepository.GetAll(input);

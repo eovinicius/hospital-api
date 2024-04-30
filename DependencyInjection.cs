@@ -29,6 +29,7 @@ public static class DependencyInjection
         services.AddScoped<DesativarPacienteUseCase>();
         services.AddScoped<ListarExamesUseCase>();
         services.AddScoped<RegistrarLaudoUseCase>();
+        services.AddScoped<DetalhesExameUseCase>();
     }
 
     public static void AddRepositories(this IServiceCollection services)
