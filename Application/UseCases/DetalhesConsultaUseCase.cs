@@ -1,5 +1,4 @@
 using SistemaHospitalar.Application.Exceptions;
-using SistemaHospitalar.Domain.Entities;
 using SistemaHospitalar.Application.Repositories;
 using SistemaHospitalar.Application.Dtos.output;
 
@@ -8,7 +7,7 @@ namespace SistemaHospitalar.Application.UseCases;
 public class DetalhesConsultaUseCase
 {
     private readonly IConsultaRepository _consultaRepository;
-    private ILogger<DetalhesConsultaUseCase> _logger;
+    private readonly ILogger<DetalhesConsultaUseCase> _logger;
 
     public DetalhesConsultaUseCase(IConsultaRepository consultaRepository, ILogger<DetalhesConsultaUseCase> logger)
     {
@@ -31,4 +30,4 @@ public class DetalhesConsultaUseCase
 
         return consultaDto;
     }
-}
+}   

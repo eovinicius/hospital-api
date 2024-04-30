@@ -13,7 +13,7 @@ namespace SistemaHospitalar.Infrastructure.Controllers.Medicos;
 public class CadastrarMedicoController : ControllerBase
 {
     [HttpPost]
-    public async Task<IActionResult> Execute([FromServices] CadastrarMedicoUseCase usecase, [FromBody] CadastrarMedicoInput input)
+    public async Task<IActionResult> Execute([FromServices] CadastrarMedicoUseCase usecase, [FromForm] CadastrarMedicoInput input)
     {
         await usecase.Handle(input);
         return Created("", new ResponseObject("Médico cadastrado com sucesso!"));

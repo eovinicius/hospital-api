@@ -35,7 +35,12 @@ public class ConsultaRepository : IConsultaRepository
 
     public async Task<Consulta?> GetById(Guid id)
     {
-        return await _context.Consultas.Include(x => x.Laudo).FirstOrDefaultAsync(c => c.Id == id);
+        return await _context.Consultas
+        .Include(x => x.Laudo)
+        .Include(x => x.Medico)
+        .Include(x => x.Paciente)
+        .Include(x => x.Exames)
+        .FirstOrDefaultAsync(c => c.Id == id);
     }
     public Task Update(Consulta consulta)
     {

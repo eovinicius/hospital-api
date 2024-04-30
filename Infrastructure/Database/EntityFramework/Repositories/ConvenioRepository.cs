@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using SistemaHospitalar.Domain.Entities;
 using SistemaHospitalar.Application.Repositories;
+using SistemaHospitalar.Application.Dtos.output;
 
 namespace SistemaHospitalar.Infrastructure.Database.EntityFramework.Repositories;
 public class ConvenioRepository : IConvenioRepository
@@ -17,12 +18,13 @@ public class ConvenioRepository : IConvenioRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task<List<Convenio>> GetAll(Pagination pagination)
+    public async Task<List<ListConvenioOutput>> GetAll(Pagination pagination)
     {
         return await _context.Convenios
         .AsNoTracking()
         .Skip((pagination.Page - 1) * pagination.Limit)
         .Take(pagination.Limit)
+        .Select(c => new ListConvenioOutput(c.Id, c.Nome, c.Cnpj, c.Ativo))
         .ToListAsync();
     }
 
