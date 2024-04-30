@@ -26,8 +26,6 @@ public class DetalhesConsultaUseCase
 
         _logger.LogInformation("Detalhes da consulta {id} encontrados", id);
 
-        var consultaDto = new ConsultaDto(consulta);
-
-        return consultaDto;
+        return new ConsultaDto(consulta);
     }
-}   
+}

@@ -25,9 +25,8 @@ public class DetalhesMedicoUseCase
             throw new NotFoundException("Médico");
         }
 
-        var medicoDto = new MedicoDto(medico);
-
         _logger.LogInformation("Médico {id} encontrado", id);
-        return medicoDto;
+        return new MedicoDto(medico);
+
     }
 }

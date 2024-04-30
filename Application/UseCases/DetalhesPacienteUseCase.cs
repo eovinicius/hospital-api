@@ -22,9 +22,8 @@ public class DetalhesPacienteUseCase
             throw new NotFoundException("Paciente");
         }
 
-        var pacienteDto = new PacienteDto(paciente);
-
         _logger.LogInformation("Paciente encontrado com sucesso.");
-        return pacienteDto;
+        
+        return new PacienteDto(paciente);
     }
 }
