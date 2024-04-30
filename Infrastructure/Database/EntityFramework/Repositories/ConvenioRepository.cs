@@ -35,7 +35,9 @@ public class ConvenioRepository : IConvenioRepository
 
     public async Task<Convenio?> GetById(Guid id)
     {
-        return await _context.Convenios.FirstOrDefaultAsync(c => c.Id == id);
+        return await _context.Convenios
+        .Include(c => c.Pacientes)
+        .FirstOrDefaultAsync(x => x.Id == id);
     }
 
     public async Task<Convenio?> GetByIdOrNull(Guid? id)

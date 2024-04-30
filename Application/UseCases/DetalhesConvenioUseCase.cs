@@ -1,6 +1,7 @@
 using SistemaHospitalar.Application.Exceptions;
 using SistemaHospitalar.Domain.Entities;
 using SistemaHospitalar.Application.Repositories;
+using SistemaHospitalar.Application.Dtos.output;
 
 namespace SistemaHospitalar.Application.UseCases;
 
@@ -15,7 +16,7 @@ public class DetalhesConvenioUseCase
         _logger = logger;
     }
 
-    public async Task<Convenio> Handle(Guid id)
+    public async Task<ConvenioDto> Handle(Guid id)
     {
         _logger.LogInformation("Buscando convênio {id}", id);
 
@@ -26,6 +27,6 @@ public class DetalhesConvenioUseCase
 
         _logger.LogInformation("Convênio {id} encontrado", id);
 
-        return convenio;
+        return new ConvenioDto(convenio);
     }
 }
