@@ -12,7 +12,13 @@ public record ConsultaDto
     decimal Valor
 )
 {
-    public ConsultaDto(Consulta consulta) : this(consulta.Id, consulta.DataHora, consulta.Paciente!.Nome, consulta.Medico!.Nome, consulta.Exames.Select(e => e.Nome).ToList(), consulta.Valor)
+    public ConsultaDto(Consulta consulta) : this(
+        consulta.Id,
+        consulta.DataHora,
+        consulta.Paciente!.Nome,
+        consulta.Medico!.Nome,
+        consulta.Exames.Select(e => e.Nome).ToList(),
+        consulta.Valor)
     {
     }
 }
