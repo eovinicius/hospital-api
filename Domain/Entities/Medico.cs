@@ -12,6 +12,7 @@ public class Medico
     public bool Ativo { get; private set; }
     public virtual List<Consulta> Consultas { get; set; }
     public virtual List<Exame> Exames { get; set; }
+    public DateTime CriadoEm { get; private set; }
 
     public Medico(string nome, string crm, string imagemCrm, string especialidade)
     {
@@ -23,6 +24,7 @@ public class Medico
         Ativo = true;
         Consultas = [];
         Exames = [];
+        CriadoEm = DateTime.Now;
 
         Validate();
     }

@@ -9,6 +9,7 @@ public class Convenio
     public string Cnpj { get; private set; }
     public bool Ativo { get; private set; }
     public virtual List<Paciente> Pacientes { get; private set; }
+    public DateTime CriadoEm { get; private set; }
 
     public Convenio(string nome, string cnpj)
     {
@@ -17,6 +18,7 @@ public class Convenio
         Cnpj = cnpj;
         Ativo = true;
         Pacientes = [];
+        CriadoEm = DateTime.Now;
 
         Validate();
     }

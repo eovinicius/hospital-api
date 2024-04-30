@@ -11,5 +11,6 @@ public class ConvenioMap : IEntityTypeConfiguration<Convenio>
         builder.Property(x => x.Nome);
         builder.Property(x => x.Cnpj);
         builder.Property(x => x.Ativo);
+        builder.Property(x => x.CriadoEm);
     }
 }

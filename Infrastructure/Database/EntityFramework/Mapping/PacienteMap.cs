@@ -13,5 +13,6 @@ public class PacienteMap : IEntityTypeConfiguration<Paciente>
         builder.Property(x => x.ImagemDocumento);
         builder.Property(x => x.ConvenioId);
         builder.Property(x => x.Ativo);
+        builder.Property(x => x.CriadoEm);
     }
 }
