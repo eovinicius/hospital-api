@@ -23,7 +23,7 @@ public class PacienteRepository : IPacienteRepository
     {
         return await _context.Pacientes
         .AsNoTracking()
-        .Select(p => new ListPacienteOutput(p.Id, p.Nome, p.Documento, p.Ativo, p.Convenio!.Nome))
+        .Select(p => new ListPacienteOutput(p.Id, p.Nome, p.Documento, p.Convenio!.Nome, p.Ativo))
         .Skip((pagination.Page - 1) * pagination.Limit)
         .Take(pagination.Limit)
         .ToListAsync();
