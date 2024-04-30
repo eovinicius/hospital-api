@@ -28,6 +28,7 @@ public static class DependencyInjection
         services.AddScoped<DetalhesConsultaUseCase>();
         services.AddScoped<DesativarPacienteUseCase>();
         services.AddScoped<ListarExamesUseCase>();
+        services.AddScoped<RegistrarLaudoUseCase>();
     }
 
     public static void AddRepositories(this IServiceCollection services)
@@ -38,6 +39,7 @@ public static class DependencyInjection
         services.AddScoped<IConvenioRepository, Infrastructure.Database.EntityFramework.Repositories.ConvenioRepository>();
         services.AddScoped<IConsultaRepository, Infrastructure.Database.EntityFramework.Repositories.ConsultaRepository>();
         services.AddScoped<IExameRepository, Infrastructure.Database.EntityFramework.Repositories.ExameRepository>();
+        services.AddScoped<ILaudoRepository, Infrastructure.Database.EntityFramework.Repositories.LaudoRepository>();
     }
 
     public static void AddServices(this IServiceCollection services)
