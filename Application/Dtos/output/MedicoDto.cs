@@ -4,6 +4,7 @@ namespace SistemaHospitalar.Application.Dtos.output;
 
 public record MedicoDto
 (
+    Guid Id,
     string Nome,
     string Crm,
     string Especialidade,
@@ -12,6 +13,7 @@ public record MedicoDto
 )
 {
     public MedicoDto(Medico medico) : this(
+        medico.Id,
         medico.Nome,
         medico.Crm,
         medico.Especialidade,
