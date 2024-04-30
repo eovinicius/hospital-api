@@ -1,3 +1,3 @@
 namespace SistemaHospitalar.Application.Dtos.output;
 
-public record ListConsultaOutput(Guid Id, DateTime DataHora, decimal Valor, string? Paciente, string? Medico, List<string>? Exames);
+public record ListConsultaOutput(Guid Id, DateTime DataHora, string? Paciente, string? Medico, decimal Valor);

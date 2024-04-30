@@ -1,6 +1,7 @@
 using SistemaHospitalar.Application.Exceptions;
 using SistemaHospitalar.Domain.Entities;
 using SistemaHospitalar.Application.Repositories;
+using SistemaHospitalar.Application.Dtos.output;
 
 namespace SistemaHospitalar.Application.UseCases;
 
@@ -15,7 +16,7 @@ public class DetalhesConsultaUseCase
         _logger = logger;
     }
 
-    public async Task<Consulta> Handle(Guid id)
+    public async Task<ConsultaDto> Handle(Guid id)
     {
         _logger.LogInformation("Buscando detalhes da consulta {id}", id);
 
@@ -25,6 +26,9 @@ public class DetalhesConsultaUseCase
             throw new NotFoundException("Consulta");
 
         _logger.LogInformation("Detalhes da consulta {id} encontrados", id);
-        return consulta;
+
+        var consultaDto = new ConsultaDto(consulta);
+
+        return consultaDto;
     }
 }

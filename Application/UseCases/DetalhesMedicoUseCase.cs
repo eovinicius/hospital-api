@@ -1,6 +1,7 @@
 using SistemaHospitalar.Application.Exceptions;
 using SistemaHospitalar.Domain.Entities;
 using SistemaHospitalar.Application.Repositories;
+using SistemaHospitalar.Application.Dtos.output;
 
 namespace SistemaHospitalar.Application.UseCases;
 
@@ -14,7 +15,7 @@ public class DetalhesMedicoUseCase
         _medicoRepository = medicoRepository;
         _logger = logger;
     }
-    public async Task<Medico> Handle(Guid id)
+    public async Task<MedicoDto> Handle(Guid id)
     {
         _logger.LogInformation("Buscando médico {id}", id);
         var medico = await _medicoRepository.GetById(id);
@@ -24,7 +25,9 @@ public class DetalhesMedicoUseCase
             throw new NotFoundException("Médico");
         }
 
+        var medicoDto = new MedicoDto(medico);
+
         _logger.LogInformation("Médico {id} encontrado", id);
-        return medico;
+        return medicoDto;
     }
 }
