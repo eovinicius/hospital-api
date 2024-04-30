@@ -2,6 +2,7 @@ using SistemaHospitalar.Application.Dtos.input;
 using SistemaHospitalar.Application.Exceptions;
 using SistemaHospitalar.Application.Repositories;
 using SistemaHospitalar.Application.Services;
+using SistemaHospitalar.Application.Utils;
 using SistemaHospitalar.Domain.Auth;
 using SistemaHospitalar.Domain.Entities;
 
@@ -29,7 +30,9 @@ public class CadastrarMedicoUseCase
 
         var hashPassword = _hashService.Hash(input.Senha);
 
-        var medico = new Medico(input.Nome, input.Crm, input.Especialidade);
+        var documentPath = DocumentUtils.Save(input.ImagemCrm);
+
+        var medico = new Medico(input.Nome, input.Crm, documentPath, input.Especialidade);
         var usuario = new Usuario(input.Crm, hashPassword, Roles.Medico);
 
         await _medicoRepository.Add(medico);
