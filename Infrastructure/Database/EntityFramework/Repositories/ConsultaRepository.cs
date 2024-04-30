@@ -27,7 +27,7 @@ public class ConsultaRepository : IConsultaRepository
     {
         return await _context.Consultas
         .AsNoTracking()
-        .Select(x => new ListConsultaOutput(x.Id, x.DataHora, x.Paciente!.Nome, x.Medico!.Nome, x.Valor))
+        .Select(x => new ListConsultaOutput(x.Id, x.DataHora, x.Paciente!.Nome, x.Medico!.Nome, x.Valor, x.Laudo.Id.ToString()))
         .Skip((pagination.Page - 1) * pagination.Limit)
         .Take(pagination.Limit)
         .ToListAsync();

@@ -9,7 +9,8 @@ public record ConsultaDto
     string Paciente,
     string Medico,
     List<string> Exames,
-    decimal Valor
+    decimal Valor,
+    string? Laudo
 )
 {
     public ConsultaDto(Consulta consulta) : this(
@@ -18,7 +19,9 @@ public record ConsultaDto
         consulta.Paciente!.Nome,
         consulta.Medico!.Nome,
         consulta.Exames.Select(e => e.Nome).ToList(),
-        consulta.Valor)
+        consulta.Valor,
+        consulta.Laudo?.ConsultaId.ToString()
+        )
     {
     }
 }
