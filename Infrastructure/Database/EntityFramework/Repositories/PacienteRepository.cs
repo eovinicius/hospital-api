@@ -31,12 +31,15 @@ public class PacienteRepository : IPacienteRepository
 
     public async Task<Paciente?> GetByDocumento(string documento)
     {
-        return await _context.Pacientes.FirstOrDefaultAsync(p => p.Documento == documento);
+        return await _context.Pacientes
+        .AsNoTracking()
+        .FirstOrDefaultAsync(p => p.Documento == documento);
     }
 
     public async Task<Paciente?> GetById(Guid id)
     {
-        return await _context.Pacientes.FirstOrDefaultAsync(p => p.Id == id);
+        return await _context.Pacientes
+        .FirstOrDefaultAsync(p => p.Id == id);
     }
 
     public Task Update(Paciente paciente)

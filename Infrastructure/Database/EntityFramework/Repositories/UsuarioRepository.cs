@@ -30,7 +30,8 @@ public class UsuarioRepository : IUsuarioRepository
 
     public async Task<Usuario?> GetById(Guid id)
     {
-        return await _context.Usuarios.FindAsync(id);
+        return await _context.Usuarios
+        .FirstOrDefaultAsync(x => x.Id == id);
     }
 
     public async Task<Usuario?> GetByUsername(string username)

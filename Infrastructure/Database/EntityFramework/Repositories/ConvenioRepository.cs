@@ -30,7 +30,9 @@ public class ConvenioRepository : IConvenioRepository
 
     public async Task<Convenio?> GetByCNPJ(string cnpj)
     {
-        return await _context.Convenios.FirstOrDefaultAsync(c => c.Cnpj == cnpj);
+        return await _context.Convenios
+        .AsNoTracking()
+        .FirstOrDefaultAsync(c => c.Cnpj == cnpj);
     }
 
     public async Task<Convenio?> GetById(Guid id)

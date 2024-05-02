@@ -30,13 +30,16 @@ public class MedicoRepository : IMedicoRepository
 
     public async Task<Medico?> GetByCRM(string crm)
     {
-        var medico = await _context.Medicos.FirstOrDefaultAsync(m => m.Crm == crm);
-        return medico;
+        return await _context.Medicos
+        .AsNoTracking()
+        .FirstOrDefaultAsync(m => m.Crm == crm);
+
     }
 
     public async Task<Medico?> GetById(Guid id)
     {
-        return await _context.Medicos.FirstOrDefaultAsync(m => m.Id == id);
+        return await _context.Medicos
+        .FirstOrDefaultAsync(m => m.Id == id);
     }
 
     public async Task Update(Medico entity)

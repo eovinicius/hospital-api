@@ -21,6 +21,7 @@ public class LaudoRepository : ILaudoRepository
     public async Task<List<Laudo>> GetAll(Pagination pagination)
     {
         return await _dataContext.Laudos
+            .AsNoTracking()
             .Skip((pagination.Page - 1) * pagination.Limit)
             .Take(pagination.Limit)
             .ToListAsync();
@@ -28,7 +29,8 @@ public class LaudoRepository : ILaudoRepository
 
     public Task<Laudo?> GetById(Guid id)
     {
-        return _dataContext.Laudos.FirstOrDefaultAsync(x => x.Id == id);
+        return _dataContext.Laudos
+        .FirstOrDefaultAsync(x => x.Id == id);
     }
 
     public async Task Update(Laudo entity)
