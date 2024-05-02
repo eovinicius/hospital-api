@@ -1,4 +1,3 @@
-using SistemaHospitalar.Application.Dtos.input;
 using SistemaHospitalar.Application.Dtos.output;
 using SistemaHospitalar.Application.Repositories;
 
