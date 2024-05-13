@@ -40,7 +40,12 @@ public class MarcarConsultaUseCase
         if (paciente.ConvenioId == null)
             valorDaConsulta = 70;
 
-        var consulta = new Consulta(input.DataConsulta, valorDaConsulta, input.PacienteId, input.MedicoId);
+        var consulta = new Consulta(
+            input.DataConsulta,
+            valorDaConsulta,
+            input.PacienteId,
+            input.MedicoId
+        );
 
         await _consultaRepository.Add(consulta);
 
