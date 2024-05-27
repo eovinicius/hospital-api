@@ -23,7 +23,7 @@ public class AuthService : IAuthService
         {
             Subject = new ClaimsIdentity(
             [
-                new Claim("Id" , userId.ToString()),
+                new Claim("Id", userId.ToString()),
                 new Claim(ClaimTypes.Role, roles.ToString())
             ]),
             Expires = DateTime.UtcNow.AddHours(8),

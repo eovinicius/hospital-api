@@ -23,7 +23,7 @@ public class DetalhesPacienteUseCase
         }
 
         _logger.LogInformation("Paciente encontrado com sucesso.");
-        
+
         return new PacienteDto(paciente);
     }
 }

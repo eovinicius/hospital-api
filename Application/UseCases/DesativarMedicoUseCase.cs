@@ -22,7 +22,7 @@ public class DesativarMedicoUseCase
 
         if (medico == null)
             throw new NotFoundException("Médico");
-        
+
         if (medico.Ativo == false)
             throw new ConflictException("Médico já está desativado.");
 
