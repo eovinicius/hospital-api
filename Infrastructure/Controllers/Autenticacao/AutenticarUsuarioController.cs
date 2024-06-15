@@ -10,8 +10,6 @@ namespace SistemaHospitalar.Infrastructure.Controllers.Autenticacao;
 [Tags("Autenticacao")]
 public class AutenticarUsuarioController : ControllerBase
 {
-
-
     [HttpPost("login")]
     public async Task<IActionResult> Execute
     (
