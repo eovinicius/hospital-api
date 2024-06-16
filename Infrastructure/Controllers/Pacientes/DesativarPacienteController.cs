@@ -14,6 +14,7 @@ public class DesativarPacienteController : ControllerBase
     [HttpDelete("{id:guid}")]
     public async Task<IActionResult> Execute([FromServices] DesativarPacienteUseCase useCase, [FromRoute] Guid id)
     {
+        var userId = User.Claims.FirstOrDefault(c => c.Type == "Id")?.Value;
         await useCase.Execute(id);
         return Ok(new ResponseObject("Paciente desativado com sucesso!"));
     }
