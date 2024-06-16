@@ -4,7 +4,7 @@ public class DocumentUtils
 {
     public static string Save(IFormFile document)
     {
-        var path = Path.Combine(Directory.GetCurrentDirectory(), "Infrastructure/images");
+        var path = Path.Combine(Directory.GetCurrentDirectory(), "Infrastructure\\images");
 
         Console.WriteLine(Directory.GetCurrentDirectory());
 
