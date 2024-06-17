@@ -6,4 +6,5 @@ public interface IConsultaRepository : IRepository<Consulta>
 {
     Task<bool> ExistsConsultaMarcada(Guid medicoId, DateTime dataHora);
     Task<List<ListConsultaOutput>> GetAll(Pagination pagination);
+    Task<List<ListConsultaOutput>> GetAllConsultaByPaciente(Guid pacienteId, Pagination pagination);
 }

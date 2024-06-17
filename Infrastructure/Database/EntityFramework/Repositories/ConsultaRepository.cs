@@ -33,6 +33,17 @@ public class ConsultaRepository : IConsultaRepository
         .ToListAsync();
     }
 
+    public Task<List<ListConsultaOutput>> GetAllConsultaByPaciente(Guid pacienteId, Pagination pagination)
+    {
+        return _context.Consultas
+        .AsNoTracking()
+        .Where(c => c.PacienteId == pacienteId)
+        .Select(x => new ListConsultaOutput(x.Id, x.DataHora, x.Paciente!.Nome, x.Medico!.Nome, x.Valor, x.Laudo!.Id.ToString()))
+        .Skip((pagination.Page - 1) * pagination.Limit)
+        .Take(pagination.Limit)
+        .ToListAsync();
+    }
+
     public async Task<Consulta?> GetById(Guid id)
     {
         return await _context.Consultas
